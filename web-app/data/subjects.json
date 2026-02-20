@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Pendidikan Pancasila",
+    "category": "Umum",
+    "description": "Mata pelajaran yang mempelajari nilai-nilai Pancasila, ideologi negara, dan karakter bangsa Indonesia",
+    "importance": "Penting untuk semua jurusan sebagai dasar pemahaman nilai kebangsaan",
+    "relatedMajors": ["Hukum", "Ilmu Komunikasi", "Hubungan Internasional", "Pendidikan"]
+  },
+  {
+    "id": 2,
+    "name": "Bahasa Indonesia",
+    "category": "Bahasa",
+    "description": "Mata pelajaran yang mempelajari tata bahasa, sastra, dan komunikasi dalam Bahasa Indonesia",
+    "importance": "Sangat penting untuk jurusan komunikasi, sastra, hukum, dan pendidikan",
+    "relatedMajors": ["Hukum", "Ilmu Komunikasi", "Sastra Indonesia", "Pendidikan Bahasa Indonesia", "Jurnalistik"]
+  },
+  {
+    "id": 3,
+    "name": "Bahasa Inggris",
+    "category": "Bahasa",
+    "description": "Mata pelajaran yang mempelajari tata bahasa, komunikasi, dan literatur dalam Bahasa Inggris",
+    "importance": "Sangat penting untuk hampir semua jurusan, terutama teknik, kedokteran, dan hubungan internasional",
+    "relatedMajors": ["Teknik Informatika", "Hubungan Internasional", "Sastra Inggris", "Kedokteran", "Manajemen"]
+  },
+  {
+    "id": 4,
+    "name": "Matematika (Umum)",
+    "category": "IPA",
+    "description": "Mata pelajaran yang mempelajari logika, aljabar, geometri, trigonometri, dan kalkulus dasar",
+    "importance": "Sangat penting untuk jurusan teknik, MIPA, ekonomi, dan akuntansi",
+    "relatedMajors": ["Teknik Informatika", "Matematika", "Ekonomi", "Akuntansi", "Teknik Sipil", "Statistika"]
+  },
+  {
+    "id": 5,
+    "name": "Fisika",
+    "category": "IPA",
+    "description": "Mata pelajaran yang mempelajari mekanika, listrik, magnet, optik, dan termodinamika",
+    "importance": "Sangat penting untuk jurusan teknik dan MIPA",
+    "relatedMajors": ["Teknik Elektro", "Teknik Mesin", "Fisika", "Teknik Sipil", "Teknik Informatika"]
+  },
+  {
+    "id": 6,
+    "name": "Kimia",
+    "category": "IPA",
+    "description": "Mata pelajaran yang mempelajari struktur materi, reaksi kimia, dan sifat-sifat zat",
+    "importance": "Sangat penting untuk jurusan kesehatan, farmasi, dan teknik kimia",
+    "relatedMajors": ["Kedokteran", "Farmasi", "Teknik Kimia", "Kimia", "Kedokteran Gigi"]
+  },
+  {
+    "id": 7,
+    "name": "Biologi",
+    "category": "IPA",
+    "description": "Mata pelajaran yang mempelajari makhluk hidup, ekosistem, genetika, dan fisiologi",
+    "importance": "Sangat penting untuk jurusan kesehatan, pertanian, dan biologi",
+    "relatedMajors": ["Kedokteran", "Biologi", "Farmasi", "Keperawatan", "Agroteknologi", "Kedokteran Hewan"]
+  },
+  {
+    "id": 8,
+    "name": "Geografi",
+    "category": "IPS",
+    "description": "Mata pelajaran yang mempelajari bumi, lingkungan, peta, dan fenomena alam",
+    "importance": "Penting untuk jurusan geografi, perencanaan wilayah, dan hubungan internasional",
+    "relatedMajors": ["Geografi", "Perencanaan Wilayah", "Hubungan Internasional", "Teknik Geodesi"]
+  },
+  {
+    "id": 9,
+    "name": "Sosiologi",
+    "category": "IPS",
+    "description": "Mata pelajaran yang mempelajari masyarakat, interaksi sosial, dan struktur sosial",
+    "importance": "Penting untuk jurusan ilmu sosial, komunikasi, dan psikologi",
+    "relatedMajors": ["Sosiologi", "Ilmu Komunikasi", "Psikologi", "Antropologi", "Kesejahteraan Sosial"]
+  },
+  {
+    "id": 10,
+    "name": "Ekonomi",
+    "category": "IPS",
+    "description": "Mata pelajaran yang mempelajari produksi, distribusi, konsumsi, dan sistem ekonomi",
+    "importance": "Sangat penting untuk jurusan ekonomi, manajemen, dan akuntansi",
+    "relatedMajors": ["Ekonomi", "Manajemen", "Akuntansi", "Ekonomi Pembangunan", "Agribisnis"]
+  },
+  {
+    "id": 11,
+    "name": "Sejarah",
+    "category": "IPS",
+    "description": "Mata pelajaran yang mempelajari peristiwa masa lalu, kronologi, dan perkembangan peradaban",
+    "importance": "Penting untuk jurusan sejarah, hukum, dan hubungan internasional",
+    "relatedMajors": ["Sejarah", "Hukum", "Hubungan Internasional", "Arkeologi", "Ilmu Politik"]
+  },
+  {
+    "id": 12,
+    "name": "Pendidikan Jasmani, Olahraga, dan Kesehatan",
+    "category": "Umum",
+    "description": "Mata pelajaran yang mempelajari kesehatan fisik, olahraga, dan pola hidup sehat",
+    "importance": "Penting untuk jurusan olahraga, kesehatan masyarakat, dan keperawatan",
+    "relatedMajors": ["Pendidikan Jasmani", "Kesehatan Masyarakat", "Keperawatan", "Ilmu Keolahragaan"]
+  },
+  {
+    "id": 13,
+    "name": "Seni dan Budaya",
+    "category": "Umum",
+    "description": "Mata pelajaran yang mempelajari seni rupa, musik, tari, dan budaya Indonesia",
+    "importance": "Penting untuk jurusan seni, desain, dan arsitektur",
+    "relatedMajors": ["Seni Rupa", "Desain Komunikasi Visual", "Arsitektur", "Musik", "Tari"]
+  },
+  {
+    "id": 14,
+    "name": "Informatika",
+    "category": "IPA",
+    "description": "Mata pelajaran yang mempelajari pemrograman, algoritma, dan teknologi informasi",
+    "importance": "Sangat penting untuk jurusan teknik informatika dan sistem informasi",
+    "relatedMajors": ["Teknik Informatika", "Sistem Informasi", "Ilmu Komputer", "Teknik Komputer"]
+  },
+  {
+    "id": 15,
+    "name": "Matematika Tingkat Lanjut",
+    "category": "IPA",
+    "description": "Mata pelajaran yang mempelajari kalkulus lanjut, statistika, dan matematika diskrit",
+    "importance": "Sangat penting untuk jurusan matematika, statistika, dan teknik",
+    "relatedMajors": ["Matematika", "Statistika", "Teknik Informatika", "Fisika", "Aktuaria"]
+  }
+]

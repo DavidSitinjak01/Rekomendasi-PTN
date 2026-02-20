@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Jurusan - Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Database Jurusan PTN</h1>
+            <p>Daftar jurusan lengkap dengan mata pelajaran yang diperlukan</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="ptn-database.html" class="nav-link">Database PTN</a>
+                <a href="majors-database.html" class="nav-link active">Database Jurusan</a>
+                <a href="subjects-database.html" class="nav-link">Database Mata Pelajaran</a>
+            </nav>
+            <div class="user-info">
+                <span id="userRole"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="filter-bar">
+                <label for="categoryFilter">Filter Kategori:</label>
+                <select id="categoryFilter" onchange="filterMajors()">
+                    <option value="all">Semua Kategori</option>
+                    <option value="IPA">IPA</option>
+                    <option value="IPS">IPS</option>
+                </select>
+                <input type="text" id="searchMajor" placeholder="Cari jurusan atau universitas..." 
+                       style="flex: 1; padding: 8px 15px; border: 2px solid #667eea; border-radius: 5px;"
+                       oninput="filterMajors()">
+                <span id="majorCount" style="font-weight: 600;"></span>
+            </div>
+
+            <div id="majorsList" class="database-grid"></div>
+        </section>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let sessionId = localStorage.getItem('sessionId');
+        let userRole = localStorage.getItem('role');
+        let allMajors = [];
+
+        // Check authentication
+        if (!sessionId) {
+            window.location.href = 'login.html';
+        }
+
+        // Display user info
+        document.getElementById('userRole').textContent = userRole === 'admin' ? '👤 Admin' : '👤 Siswa';
+
+        function logout() {
+            fetch(`${API_URL}/logout`, {
+                method: 'POST',
+                headers: { 'x-session-id': sessionId }
+            }).then(() => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        }
+
+        async function loadMajors() {
+            try {
+                const response = await fetch(`${API_URL}/majors`, {
+                    headers: { 'x-session-id': sessionId }
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    allMajors = result.data;
+                    displayMajors(allMajors);
+                }
+            } catch (error) {
+                console.error('Error loading majors:', error);
+            }
+        }
+
+        function displayMajors(majorsList) {
+            const container = document.getElementById('majorsList');
+            document.getElementById('majorCount').textContent = `Total: ${majorsList.length} Jurusan`;
+            
+            if (majorsList.length === 0) {
+                container.innerHTML = '<p>Tidak ada data jurusan</p>';
+                return;
+            }
+            
+            container.innerHTML = majorsList.map(major => {
+                const majorName = major.major || major.name;
+                const requiredSubjectsHTML = major.requiredSubjects.map(sub => 
+                    `<li><strong>${sub.name}</strong> (Min: ${sub.minScore}) - ${sub.reason || ''}</li>`
+                ).join('');
+                
+                const careerHTML = major.careerProspects ? 
+                    `<p><strong>Prospek Karir:</strong> ${major.careerProspects.join(', ')}</p>` : '';
+                
+                return `
+                    <div class="database-card">
+                        <h3>${majorName}</h3>
+                        <p class="university">${major.university}</p>
+                        <span class="badge ${major.category === 'IPA' ? 'badge-ipa' : 'badge-ips'}">${major.category}</span>
+                        ${major.description ? `<p style="margin-top: 10px; color: #666; font-style: italic;">${major.description}</p>` : ''}
+                        <p style="margin-top: 10px;"><strong>Passing Grade:</strong> ${major.passingGrade}</p>
+                        ${major.capacity ? `<p><strong>Kapasitas:</strong> ${major.capacity} mahasiswa/tahun</p>` : ''}
+                        <div style="margin-top: 15px;">
+                            <strong>Mata Pelajaran Penting:</strong>
+                            <ul class="subject-list" style="margin-top: 10px;">
+                                ${requiredSubjectsHTML}
+                            </ul>
+                        </div>
+                        ${careerHTML}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterMajors() {
+            const category = document.getElementById('categoryFilter').value;
+            const searchTerm = document.getElementById('searchMajor').value.toLowerCase();
+            
+            let filtered = allMajors;
+            
+            if (category !== 'all') {
+                filtered = filtered.filter(m => m.category === category);
+            }
+            
+            if (searchTerm) {
+                filtered = filtered.filter(m => {
+                    const majorName = (m.major || m.name).toLowerCase();
+                    const university = m.university.toLowerCase();
+                    return majorName.includes(searchTerm) || university.includes(searchTerm);
+                });
+            }
+            
+            displayMajors(filtered);
+        }
+
+        // Load data on page load
+        loadMajors();
+    </script>
+</body>
+</html>

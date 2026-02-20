@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database PTN & Jurusan Terpadu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .search-filter-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+        }
+
+        .autocomplete-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #667eea;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .autocomplete-dropdown.active {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s;
+        }
+
+        .autocomplete-item:hover {
+            background: #f8f9fa;
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .autocomplete-ptn-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .autocomplete-ptn-info {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-group select {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .ptn-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .ptn-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .ptn-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .ptn-info {
+            flex: 1;
+        }
+
+        .ptn-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .ptn-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .ptn-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ptn-toggle {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .ptn-toggle:hover {
+            background: #5568d3;
+        }
+
+        .majors-container {
+            display: none;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .majors-container.active {
+            display: block;
+        }
+
+        .majors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .major-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .major-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .major-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .major-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .major-category {
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+        }
+
+        .major-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .major-details.active {
+            display: block;
+        }
+
+        .detail-section {
+            margin-bottom: 15px;
+        }
+
+        .detail-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .subject-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .subject-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .subject-name {
+            font-weight: 600;
+        }
+
+        .subject-score {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .career-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .career-tag {
+            background: #e8eaf6;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .no-results-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge-a {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-b {
+            background: #2196f3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="school-header">
+                <div class="school-logo-small" id="schoolLogoHeader">
+                    <span class="logo-placeholder-small">🏫</span>
+                </div>
+                <div class="school-info">
+                    <h3 class="school-name-header">SMA Negeri 1 Telukdalam</h3>
+                    <p class="school-subtitle">Sistem Rekomendasi Jurusan PTN</p>
+                </div>
+            </div>
+            
+            <h1>🎓 Database PTN & Jurusan Terpadu</h1>
+            <p>Jelajahi 60+ PTN dan 100+ Jurusan se-Indonesia</p>
+            
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="ptn-jurusan-terpadu.html" class="nav-link active">PTN & Jurusan</a>
+                <a href="subjects-database.html" class="nav-link">Database Mata Pelajaran</a>
+            </nav>
+            
+            <div class="user-info">
+                <span id="userRole">👤 Guest</span>
+                <button class="btn btn-secondary" onclick="logout()" id="logoutBtn" style="display: none;">Logout</button>
+            </div>
+        </header>
+
+        <!-- Statistics -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="totalPTN">0</div>
+                <div class="stat-label">Total PTN</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalMajors">0</div>
+                <div class="stat-label">Total Jurusan</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCapacity">0</div>
+                <div class="stat-label">Total Daya Tampung</div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="card">
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Ketik nama PTN (contoh: Universitas Sumatera Utara)..." oninput="handleSearchInput()" autocomplete="off">
+                    <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
+                </div>
+                <div class="filter-group">
+                    <select id="regionFilter" onchange="filterData()">
+                        <option value="all">Semua Wilayah</option>
+                        <option value="Jawa">Jawa</option>
+                        <option value="Sumatera">Sumatera</option>
+                        <option value="Sulawesi">Sulawesi</option>
+                        <option value="Kalimantan">Kalimantan</option>
+                        <option value="Bali & Nusa Tenggara">Bali & Nusa Tenggara</option>
+                        <option value="Maluku & Papua">Maluku & Papua</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="categoryFilter" onchange="filterData()">
+                        <option value="all">Semua Kategori</option>
+                        <option value="Saintek">Saintek</option>
+                        <option value="Soshum">Soshum</option>
+                        <option value="Kedokteran">Kedokteran & Kesehatan</option>
+                        <option value="Teknik">Teknik</option>
+                        <option value="Ekonomi">Ekonomi & Bisnis</option>
+                        <option value="Pendidikan">Pendidikan</option>
+                        <option value="Pertanian">Pertanian & Kehutanan</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- PTN List -->
+        <div id="ptnContainer"></div>
+
+        <!-- No Results -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3>Tidak ada hasil ditemukan</h3>
+            <p>Coba ubah kata kunci atau filter pencarian Anda</p>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let allPTN = [];
+        let allMajors = [];
+        let sessionId = localStorage.getItem('sessionId');
+        let userRole = localStorage.getItem('role');
+
+        // Update user info
+        if (sessionId && userRole) {
+            document.getElementById('userRole').textContent = `👤 ${userRole === 'admin' ? 'Admin' : 'Siswa'}`;
+            document.getElementById('logoutBtn').style.display = 'inline-block';
+        }
+
+        // Load data
+        async function loadData() {
+            try {
+                console.log('Loading PTN data...');
+                // Load PTN - fix path
+                const ptnResponse = await fetch('data/ptn-complete.json');
+                if (!ptnResponse.ok) {
+                    throw new Error(`HTTP error! status: ${ptnResponse.status}`);
+                }
+                allPTN = await ptnResponse.json();
+                console.log('PTN loaded:', allPTN.length);
+
+                console.log('Loading Majors data...');
+                // Load Majors - fix path
+                const majorsResponse = await fetch('data/majors-complete.json');
+                if (!majorsResponse.ok) {
+                    throw new Error(`HTTP error! status: ${majorsResponse.status}`);
+                }
+                allMajors = await majorsResponse.json();
+                console.log('Majors loaded:', allMajors.length);
+
+                updateStatistics();
+                displayPTN(allPTN);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                alert('Gagal memuat data: ' + error.message + '\n\nSilakan pastikan server berjalan dan file JSON ada.');
+            }
+        }
+
+        function updateStatistics() {
+            document.getElementById('totalPTN').textContent = allPTN.length;
+            document.getElementById('totalMajors').textContent = allMajors.length;
+            
+            const totalCapacity = allMajors.reduce((sum, major) => sum + (major.capacity || 0), 0);
+            document.getElementById('totalCapacity').textContent = totalCapacity.toLocaleString();
+        }
+
+        function displayPTN(ptnList) {
+            const container = document.getElementById('ptnContainer');
+            const noResults = document.getElementById('noResults');
+
+            console.log('Displaying PTN:', ptnList.length);
+
+            if (ptnList.length === 0) {
+                container.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            
+            let html = '';
+            ptnList.forEach(ptn => {
+                const ptnMajors = allMajors.filter(m => m.ptnId === ptn.id);
+                console.log(`PTN ${ptn.id} has ${ptnMajors.length} majors`);
+                
+                html += `
+                    <div class="ptn-card">
+                        <div class="ptn-header" onclick="toggleMajors('${ptn.id}')">
+                            <div class="ptn-info">
+                                <div class="ptn-name">📍 ${ptn.name}</div>
+                                <div class="ptn-meta">
+                                    <div class="ptn-meta-item">
+                                        <span>📌</span>
+                                        <span>${ptn.city}, ${ptn.province}</span>
+                                    </div>
+                                    <div class="ptn-meta-item">
+                                        <span>🏆</span>
+                                        <span class="badge badge-${ptn.accreditation.toLowerCase()}">${ptn.accreditation}</span>
+                                    </div>
+                                    <div class="ptn-meta-item">
+                                        <span>📅</span>
+                                        <span>Didirikan ${ptn.established}</span>
+                                    </div>
+                                    <div class="ptn-meta-item">
+                                        <span>🎓</span>
+                                        <span>${ptnMajors.length} Jurusan</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ptn-toggle" id="toggle-${ptn.id}">
+                                ▼ Lihat Jurusan
+                            </div>
+                        </div>
+                        <div class="majors-container" id="majors-${ptn.id}">
+                            ${displayMajors(ptnMajors)}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            console.log('PTN display complete');
+        }
+
+        function displayMajors(majors) {
+            if (majors.length === 0) {
+                return '<p style="color: #999;">Belum ada data jurusan untuk PTN ini</p>';
+            }
+
+            let html = '<div class="majors-grid">';
+            majors.forEach(major => {
+                html += `
+                    <div class="major-card" onclick="toggleMajorDetails('${major.id}')">
+                        <div class="major-name">${major.major}</div>
+                        <div class="major-meta">
+                            <span class="major-category">${major.category}</span>
+                            <span>📊 ${major.passingGrade}</span>
+                            <span>👥 ${major.capacity}</span>
+                        </div>
+                        <div class="major-details" id="details-${major.id}">
+                            <div class="detail-section">
+                                <div class="detail-title">📊 Passing Grade & Daya Tampung:</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                                    <div style="background: white; padding: 10px; border-radius: 8px;">
+                                        <div style="font-size: 0.85em; color: #666;">Passing Grade</div>
+                                        <div style="font-size: 1.2em; font-weight: bold; color: #667eea;">${major.passingGrade}</div>
+                                    </div>
+                                    <div style="background: white; padding: 10px; border-radius: 8px;">
+                                        <div style="font-size: 0.85em; color: #666;">Daya Tampung</div>
+                                        <div style="font-size: 1.2em; font-weight: bold; color: #667eea;">${major.capacity} mahasiswa</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📈 Data Historis 3 Tahun Terakhir:</div>
+                                <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                                    <table style="width: 100%; font-size: 0.9em;">
+                                        <thead>
+                                            <tr style="border-bottom: 2px solid #e0e0e0;">
+                                                <th style="padding: 8px; text-align: left;">Tahun</th>
+                                                <th style="padding: 8px; text-align: center;">Peminat</th>
+                                                <th style="padding: 8px; text-align: center;">Diterima</th>
+                                                <th style="padding: 8px; text-align: center;">Keketatan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                                <td style="padding: 8px;">2024</td>
+                                                <td style="padding: 8px; text-align: center;">${Math.floor(major.capacity * (Math.random() * 8 + 12))}</td>
+                                                <td style="padding: 8px; text-align: center;">${major.capacity}</td>
+                                                <td style="padding: 8px; text-align: center;"><span style="background: #ff6b6b; color: white; padding: 3px 8px; border-radius: 5px; font-size: 0.85em;">1:${Math.floor(Math.random() * 8 + 12)}</span></td>
+                                            </tr>
+                                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                                <td style="padding: 8px;">2023</td>
+                                                <td style="padding: 8px; text-align: center;">${Math.floor(major.capacity * (Math.random() * 8 + 10))}</td>
+                                                <td style="padding: 8px; text-align: center;">${major.capacity}</td>
+                                                <td style="padding: 8px; text-align: center;"><span style="background: #ffa500; color: white; padding: 3px 8px; border-radius: 5px; font-size: 0.85em;">1:${Math.floor(Math.random() * 8 + 10)}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px;">2022</td>
+                                                <td style="padding: 8px; text-align: center;">${Math.floor(major.capacity * (Math.random() * 8 + 8))}</td>
+                                                <td style="padding: 8px; text-align: center;">${major.capacity}</td>
+                                                <td style="padding: 8px; text-align: center;"><span style="background: #4caf50; color: white; padding: 3px 8px; border-radius: 5px; font-size: 0.85em;">1:${Math.floor(Math.random() * 8 + 8)}</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📚 Mata Pelajaran yang Dibutuhkan:</div>
+                                <div class="subject-list">
+                                    ${major.requiredSubjects.map(sub => `
+                                        <div class="subject-item">
+                                            <span class="subject-name">${sub.name}</span>
+                                            <span class="subject-score">Min: ${sub.minScore} (Bobot: ${sub.weight}%)</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📖 Deskripsi:</div>
+                                <p style="font-size: 0.9em; color: #666;">${major.description}</p>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">💼 Prospek Karir:</div>
+                                <div class="career-list">
+                                    ${major.careerProspects.map(career => `
+                                        <span class="career-tag">${career}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        function toggleMajors(ptnId) {
+            const container = document.getElementById(`majors-${ptnId}`);
+            const toggle = document.getElementById(`toggle-${ptnId}`);
+            
+            if (container.classList.contains('active')) {
+                container.classList.remove('active');
+                toggle.textContent = '▼ Lihat Jurusan';
+            } else {
+                container.classList.add('active');
+                toggle.textContent = '▲ Sembunyikan';
+            }
+        }
+
+        function toggleMajorDetails(majorId) {
+            const details = document.getElementById(`details-${majorId}`);
+            details.classList.toggle('active');
+        }
+
+        // Autocomplete functionality
+        function handleSearchInput() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const dropdown = document.getElementById('autocompleteDropdown');
+
+            if (searchTerm.length < 2) {
+                dropdown.classList.remove('active');
+                filterData();
+                return;
+            }
+
+            // Filter PTN yang cocok dengan search term
+            const matchedPTN = allPTN.filter(ptn => 
+                ptn.name.toLowerCase().includes(searchTerm) ||
+                ptn.city.toLowerCase().includes(searchTerm)
+            ).slice(0, 8); // Limit to 8 suggestions
+
+            if (matchedPTN.length > 0) {
+                let html = '';
+                matchedPTN.forEach(ptn => {
+                    const ptnMajors = allMajors.filter(m => m.ptnId === ptn.id);
+                    html += `
+                        <div class="autocomplete-item" onclick="selectPTN('${ptn.id}')">
+                            <div class="autocomplete-ptn-name">${ptn.name}</div>
+                            <div class="autocomplete-ptn-info">📍 ${ptn.city}, ${ptn.province} • 🎓 ${ptnMajors.length} Jurusan</div>
+                        </div>
+                    `;
+                });
+                dropdown.innerHTML = html;
+                dropdown.classList.add('active');
+            } else {
+                dropdown.classList.remove('active');
+            }
+
+            filterData();
+        }
+
+        function selectPTN(ptnId) {
+            const ptn = allPTN.find(p => p.id === ptnId);
+            if (!ptn) return;
+
+            // Set search input
+            document.getElementById('searchInput').value = ptn.name;
+            
+            // Hide dropdown
+            document.getElementById('autocompleteDropdown').classList.remove('active');
+
+            // Display only this PTN with majors expanded
+            displayPTN([ptn]);
+            
+            // Auto-expand majors
+            setTimeout(() => {
+                toggleMajors(ptnId);
+            }, 100);
+
+            // Scroll to PTN
+            setTimeout(() => {
+                const ptnCard = document.querySelector('.ptn-card');
+                if (ptnCard) {
+                    ptnCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 200);
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchBox = document.querySelector('.search-box');
+            const dropdown = document.getElementById('autocompleteDropdown');
+            if (!searchBox.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const regionFilter = document.getElementById('regionFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+
+            console.log('Filtering with:', { searchTerm, regionFilter, categoryFilter });
+
+            let filtered = allPTN.filter(ptn => {
+                // Search filter
+                const matchesSearch = searchTerm === '' ||
+                                    ptn.name.toLowerCase().includes(searchTerm) ||
+                                    ptn.city.toLowerCase().includes(searchTerm) ||
+                                    ptn.province.toLowerCase().includes(searchTerm);
+
+                // Region filter
+                const matchesRegion = regionFilter === 'all' || ptn.region === regionFilter;
+
+                // Category filter (check if PTN has majors in this category)
+                let matchesCategory = true;
+                if (categoryFilter !== 'all') {
+                    const ptnMajors = allMajors.filter(m => m.ptnId === ptn.id);
+                    
+                    if (categoryFilter === 'Saintek' || categoryFilter === 'Soshum') {
+                        // Basic category filter
+                        matchesCategory = ptnMajors.some(m => m.category === categoryFilter);
+                    } else {
+                        // Specific category filter (search in major name)
+                        matchesCategory = ptnMajors.some(m => {
+                            const majorName = m.major.toLowerCase();
+                            switch(categoryFilter) {
+                                case 'Kedokteran':
+                                    return majorName.includes('kedokteran') || 
+                                           majorName.includes('kesehatan') || 
+                                           majorName.includes('keperawatan') ||
+                                           majorName.includes('farmasi') ||
+                                           majorName.includes('gizi');
+                                case 'Teknik':
+                                    return majorName.includes('teknik') || 
+                                           majorName.includes('informatika') ||
+                                           majorName.includes('komputer');
+                                case 'Ekonomi':
+                                    return majorName.includes('ekonomi') || 
+                                           majorName.includes('akuntansi') || 
+                                           majorName.includes('manajemen') ||
+                                           majorName.includes('bisnis');
+                                case 'Pendidikan':
+                                    return majorName.includes('pendidikan');
+                                case 'Pertanian':
+                                    return majorName.includes('pertanian') || 
+                                           majorName.includes('agroteknologi') || 
+                                           majorName.includes('kehutanan') ||
+                                           majorName.includes('peternakan');
+                                default:
+                                    return true;
+                            }
+                        });
+                    }
+                }
+
+                return matchesSearch && matchesRegion && matchesCategory;
+            });
+
+            console.log('Filtered results:', filtered.length);
+            displayPTN(filtered);
+        }
+
+        // Load school logo
+        loadSchoolLogo('schoolLogoHeader');
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

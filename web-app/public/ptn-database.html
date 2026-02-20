@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database PTN - Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Database PTN Se-Indonesia</h1>
+            <p>Daftar Perguruan Tinggi Negeri dari Aceh sampai Papua</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="ptn-database.html" class="nav-link active">Database PTN</a>
+                <a href="majors-database.html" class="nav-link">Database Jurusan</a>
+                <a href="subjects-database.html" class="nav-link">Database Mata Pelajaran</a>
+            </nav>
+            <div class="user-info">
+                <span id="userRole"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="filter-bar">
+                <label for="regionFilter">Filter Wilayah:</label>
+                <select id="regionFilter" onchange="filterByRegion()">
+                    <option value="all">Semua Wilayah</option>
+                    <option value="Sumatera">Sumatera</option>
+                    <option value="Jawa">Jawa</option>
+                    <option value="Kalimantan">Kalimantan</option>
+                    <option value="Sulawesi">Sulawesi</option>
+                    <option value="Bali & Nusa Tenggara">Bali & Nusa Tenggara</option>
+                    <option value="Maluku & Papua">Maluku & Papua</option>
+                </select>
+                <span id="ptnCount" style="margin-left: auto; font-weight: 600;"></span>
+            </div>
+
+            <div id="ptnList" class="database-grid"></div>
+        </section>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let sessionId = localStorage.getItem('sessionId');
+        let userRole = localStorage.getItem('role');
+        let allPTN = [];
+
+        // Check authentication
+        if (!sessionId) {
+            window.location.href = 'login.html';
+        }
+
+        // Display user info
+        document.getElementById('userRole').textContent = userRole === 'admin' ? '👤 Admin' : '👤 Siswa';
+
+        function logout() {
+            fetch(`${API_URL}/logout`, {
+                method: 'POST',
+                headers: { 'x-session-id': sessionId }
+            }).then(() => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        }
+
+        async function loadPTN() {
+            try {
+                const response = await fetch(`${API_URL}/ptn`, {
+                    headers: { 'x-session-id': sessionId }
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    allPTN = result.data;
+                    displayPTN(allPTN);
+                }
+            } catch (error) {
+                console.error('Error loading PTN:', error);
+            }
+        }
+
+        function displayPTN(ptnList) {
+            const container = document.getElementById('ptnList');
+            document.getElementById('ptnCount').textContent = `Total: ${ptnList.length} PTN`;
+            
+            if (ptnList.length === 0) {
+                container.innerHTML = '<p>Tidak ada data PTN</p>';
+                return;
+            }
+            
+            container.innerHTML = ptnList.map(ptn => `
+                <div class="database-card">
+                    <h3>${ptn.name}</h3>
+                    <p><strong>Singkatan:</strong> ${ptn.acronym}</p>
+                    <p><strong>Lokasi:</strong> ${ptn.location}</p>
+                    <span class="badge badge-region">${ptn.region}</span>
+                    <p><strong>Didirikan:</strong> ${ptn.established}</p>
+                    <p><strong>Akreditasi:</strong> ${ptn.accreditation}</p>
+                    ${ptn.website ? `<p><a href="${ptn.website}" target="_blank" style="color: #667eea;">🌐 Website</a></p>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function filterByRegion() {
+            const region = document.getElementById('regionFilter').value;
+            
+            if (region === 'all') {
+                displayPTN(allPTN);
+            } else {
+                const filtered = allPTN.filter(ptn => ptn.region === region);
+                displayPTN(filtered);
+            }
+        }
+
+        // Load data on page load
+        loadPTN();
+    </script>
+</body>
+</html>

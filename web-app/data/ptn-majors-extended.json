@@ -1,0 +1,338 @@
+[
+  {
+    "university": "Universitas Indonesia (UI)",
+    "major": "Teknik Informatika",
+    "category": "IPA",
+    "passingGrade": 65,
+    "capacity": 120,
+    "description": "Program studi yang mempelajari perancangan, pengembangan, dan pengelolaan sistem perangkat lunak dan teknologi informasi",
+    "careerProspects": ["Software Engineer", "Data Scientist", "System Analyst", "DevOps Engineer", "AI Engineer"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 80, "reason": "Fundamental untuk algoritma dan logika pemrograman" },
+      { "name": "Fisika", "weight": 20, "minScore": 75, "reason": "Penting untuk memahami sistem komputer dan jaringan" },
+      { "name": "Bahasa Inggris", "weight": 15, "minScore": 75, "reason": "Dokumentasi dan komunikasi teknis menggunakan Bahasa Inggris" }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "major": "Kedokteran",
+    "category": "IPA",
+    "passingGrade": 70,
+    "capacity": 100,
+    "description": "Program studi yang mempelajari ilmu kesehatan, diagnosis penyakit, dan penanganan medis untuk menjadi dokter",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen Kedokteran"],
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25, "minScore": 85, "reason": "Dasar pemahaman anatomi, fisiologi, dan patologi" },
+      { "name": "Kimia", "weight": 25, "minScore": 85, "reason": "Penting untuk farmakologi dan biokimia" },
+      { "name": "Fisika", "weight": 15, "minScore": 75, "reason": "Diperlukan untuk memahami alat medis dan radiologi" }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "major": "Ilmu Komputer",
+    "category": "IPA",
+    "passingGrade": 64,
+    "capacity": 90,
+    "description": "Program studi yang fokus pada teori komputasi, algoritma, dan pengembangan sistem cerdas",
+    "careerProspects": ["Research Scientist", "Machine Learning Engineer", "Software Architect", "Data Engineer"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 80, "reason": "Dasar untuk teori komputasi dan algoritma" },
+      { "name": "Fisika", "weight": 20, "minScore": 75, "reason": "Mendukung pemahaman sistem komputasi" },
+      { "name": "Bahasa Inggris", "weight": 15, "minScore": 75, "reason": "Literatur dan penelitian menggunakan Bahasa Inggris" }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "major": "Ekonomi",
+    "category": "IPS",
+    "passingGrade": 63,
+    "capacity": 150,
+    "description": "Program studi yang mempelajari teori ekonomi, kebijakan publik, dan analisis ekonomi makro-mikro",
+    "careerProspects": ["Ekonom", "Analis Kebijakan", "Konsultan Ekonomi", "Peneliti Ekonomi"],
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 25, "minScore": 80, "reason": "Dasar pemahaman teori ekonomi" },
+      { "name": "Matematika (Umum)", "weight": 20, "minScore": 75, "reason": "Penting untuk analisis ekonometrika" },
+      { "name": "Bahasa Inggris", "weight": 15, "minScore": 75, "reason": "Literatur ekonomi internasional" }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "major": "Hukum",
+    "category": "IPS",
+    "passingGrade": 64,
+    "capacity": 200,
+    "description": "Program studi yang mempelajari sistem hukum, perundang-undangan, dan praktik peradilan",
+    "careerProspects": ["Advokat", "Hakim", "Jaksa", "Notaris", "Legal Consultant"],
+    "requiredSubjects": [
+      { "name": "Bahasa Indonesia", "weight": 20, "minScore": 80, "reason": "Penting untuk memahami dan menyusun dokumen hukum" },
+      { "name": "Bahasa Inggris", "weight": 20, "minScore": 75, "reason": "Hukum internasional dan literatur asing" },
+      { "name": "Sejarah", "weight": 15, "minScore": 75, "reason": "Memahami perkembangan sistem hukum" }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Teknik Elektro",
+    "category": "IPA",
+    "passingGrade": 65,
+    "capacity": 110,
+    "description": "Program studi yang mempelajari sistem kelistrikan, elektronika, telekomunikasi, dan kontrol",
+    "careerProspects": ["Electrical Engineer", "Electronics Engineer", "Telecommunications Engineer", "Control Systems Engineer"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 80, "reason": "Dasar untuk analisis rangkaian dan sistem" },
+      { "name": "Fisika", "weight": 25, "minScore": 80, "reason": "Fundamental untuk memahami listrik dan magnet" },
+      { "name": "Bahasa Inggris", "weight": 10, "minScore": 70, "reason": "Literatur teknis internasional" }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Teknik Kimia",
+    "category": "IPA",
+    "passingGrade": 63,
+    "capacity": 100,
+    "description": "Program studi yang mempelajari proses kimia industri, pengolahan bahan, dan teknologi proses",
+    "careerProspects": ["Process Engineer", "Chemical Engineer", "Production Manager", "R&D Engineer"],
+    "requiredSubjects": [
+      { "name": "Kimia", "weight": 25, "minScore": 80, "reason": "Dasar untuk memahami reaksi dan proses kimia" },
+      { "name": "Matematika (Umum)", "weight": 20, "minScore": 75, "reason": "Penting untuk perhitungan proses" },
+      { "name": "Fisika", "weight": 15, "minScore": 75, "reason": "Mendukung pemahaman termodinamika" }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Matematika",
+    "category": "IPA",
+    "passingGrade": 62,
+    "capacity": 80,
+    "description": "Program studi yang mempelajari teori matematika murni dan terapan, analisis, dan pemodelan",
+    "careerProspects": ["Matematikawan", "Data Analyst", "Aktuaris", "Peneliti", "Dosen"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 30, "minScore": 85, "reason": "Fundamental untuk semua bidang matematika" },
+      { "name": "Fisika", "weight": 20, "minScore": 75, "reason": "Mendukung matematika terapan" },
+      { "name": "Bahasa Inggris", "weight": 10, "minScore": 70, "reason": "Literatur matematika internasional" }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknik Mesin",
+    "category": "IPA",
+    "passingGrade": 62,
+    "capacity": 120,
+    "description": "Program studi yang mempelajari perancangan, manufaktur, dan pemeliharaan sistem mekanik",
+    "careerProspects": ["Mechanical Engineer", "Manufacturing Engineer", "Maintenance Engineer", "Design Engineer"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 78, "reason": "Dasar untuk perhitungan teknik" },
+      { "name": "Fisika", "weight": 25, "minScore": 78, "reason": "Fundamental untuk mekanika dan termodinamika" },
+      { "name": "Kimia", "weight": 10, "minScore": 70, "reason": "Penting untuk material engineering" }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Farmasi",
+    "category": "IPA",
+    "passingGrade": 64,
+    "capacity": 90,
+    "description": "Program studi yang mempelajari obat-obatan, formulasi, dan pelayanan kefarmasian",
+    "careerProspects": ["Apoteker", "Farmasis Industri", "Peneliti Farmasi", "Quality Control"],
+    "requiredSubjects": [
+      { "name": "Kimia", "weight": 25, "minScore": 82, "reason": "Dasar untuk farmakokimia dan formulasi" },
+      { "name": "Biologi", "weight": 20, "minScore": 80, "reason": "Penting untuk farmakologi dan biofarmasi" },
+      { "name": "Matematika (Umum)", "weight": 15, "minScore": 75, "reason": "Diperlukan untuk farmakokinetika" }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Arsitektur",
+    "category": "IPA",
+    "passingGrade": 61,
+    "capacity": 100,
+    "description": "Program studi yang mempelajari perancangan bangunan, perencanaan ruang, dan estetika arsitektur",
+    "careerProspects": ["Arsitek", "Urban Planner", "Interior Designer", "Konsultan Arsitektur"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 20, "minScore": 75, "reason": "Penting untuk perhitungan struktur" },
+      { "name": "Fisika", "weight": 20, "minScore": 75, "reason": "Dasar untuk memahami struktur bangunan" },
+      { "name": "Bahasa Inggris", "weight": 10, "minScore": 70, "reason": "Literatur arsitektur internasional" }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Akuntansi",
+    "category": "IPS",
+    "passingGrade": 62,
+    "capacity": 140,
+    "description": "Program studi yang mempelajari pencatatan, pelaporan, dan analisis keuangan",
+    "careerProspects": ["Akuntan", "Auditor", "Tax Consultant", "Financial Analyst"],
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 25, "minScore": 78, "reason": "Dasar untuk memahami sistem ekonomi" },
+      { "name": "Matematika (Umum)", "weight": 20, "minScore": 75, "reason": "Penting untuk perhitungan keuangan" },
+      { "name": "Bahasa Inggris", "weight": 10, "minScore": 70, "reason": "Standar akuntansi internasional" }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknik Informatika",
+    "category": "IPA",
+    "passingGrade": 63,
+    "capacity": 110,
+    "description": "Program studi yang mempelajari pengembangan perangkat lunak, sistem informasi, dan teknologi komputer",
+    "careerProspects": ["Software Developer", "System Analyst", "Network Engineer", "Database Administrator"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 78, "reason": "Fundamental untuk algoritma" },
+      { "name": "Fisika", "weight": 20, "minScore": 75, "reason": "Dasar sistem komputer" },
+      { "name": "Bahasa Inggris", "weight": 15, "minScore": 73, "reason": "Dokumentasi teknis" }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknik Sipil",
+    "category": "IPA",
+    "passingGrade": 61,
+    "capacity": 130,
+    "description": "Program studi yang mempelajari perancangan dan pembangunan infrastruktur sipil",
+    "careerProspects": ["Civil Engineer", "Structural Engineer", "Project Manager", "Construction Manager"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 77, "reason": "Dasar perhitungan struktur" },
+      { "name": "Fisika", "weight": 25, "minScore": 77, "reason": "Fundamental mekanika struktur" },
+      { "name": "Kimia", "weight": 10, "minScore": 70, "reason": "Penting untuk material konstruksi" }
+    ]
+  },
+  {
+    "university": "Universitas Airlangga (Unair)",
+    "major": "Kedokteran Gigi",
+    "category": "IPA",
+    "passingGrade": 65,
+    "capacity": 80,
+    "description": "Program studi yang mempelajari kesehatan gigi dan mulut serta perawatan dental",
+    "careerProspects": ["Dokter Gigi", "Ortodontis", "Periodontis", "Dosen Kedokteran Gigi"],
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25, "minScore": 82, "reason": "Dasar anatomi dan fisiologi oral" },
+      { "name": "Kimia", "weight": 20, "minScore": 80, "reason": "Penting untuk material dental" },
+      { "name": "Fisika", "weight": 15, "minScore": 75, "reason": "Diperlukan untuk alat kedokteran gigi" }
+    ]
+  },
+  {
+    "university": "Universitas Airlangga (Unair)",
+    "major": "Kesehatan Masyarakat",
+    "category": "IPA",
+    "passingGrade": 60,
+    "capacity": 100,
+    "description": "Program studi yang mempelajari promosi kesehatan, epidemiologi, dan manajemen kesehatan",
+    "careerProspects": ["Public Health Officer", "Epidemiologist", "Health Program Manager", "Health Researcher"],
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25, "minScore": 77, "reason": "Dasar untuk memahami kesehatan" },
+      { "name": "Kimia", "weight": 15, "minScore": 73, "reason": "Penting untuk kesehatan lingkungan" },
+      { "name": "Matematika (Umum)", "weight": 15, "minScore": 73, "reason": "Diperlukan untuk biostatistik" }
+    ]
+  },
+  {
+    "university": "Universitas Airlangga (Unair)",
+    "major": "Keperawatan",
+    "category": "IPA",
+    "passingGrade": 59,
+    "capacity": 120,
+    "description": "Program studi yang mempelajari asuhan keperawatan dan pelayanan kesehatan",
+    "careerProspects": ["Perawat", "Perawat Spesialis", "Manajer Keperawatan", "Dosen Keperawatan"],
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25, "minScore": 75, "reason": "Dasar anatomi dan fisiologi" },
+      { "name": "Kimia", "weight": 15, "minScore": 72, "reason": "Penting untuk farmakologi" },
+      { "name": "Bahasa Inggris", "weight": 15, "minScore": 72, "reason": "Literatur keperawatan internasional" }
+    ]
+  },
+  {
+    "university": "Universitas Padjadjaran (Unpad)",
+    "major": "Ilmu Komunikasi",
+    "category": "IPS",
+    "passingGrade": 61,
+    "capacity": 130,
+    "description": "Program studi yang mempelajari teori komunikasi, media, dan public relations",
+    "careerProspects": ["Public Relations", "Journalist", "Content Creator", "Communication Consultant"],
+    "requiredSubjects": [
+      { "name": "Bahasa Indonesia", "weight": 20, "minScore": 77, "reason": "Dasar komunikasi efektif" },
+      { "name": "Bahasa Inggris", "weight": 20, "minScore": 77, "reason": "Komunikasi internasional" },
+      { "name": "Sosiologi", "weight": 15, "minScore": 73, "reason": "Memahami dinamika sosial" }
+    ]
+  },
+  {
+    "university": "Universitas Padjadjaran (Unpad)",
+    "major": "Hubungan Internasional",
+    "category": "IPS",
+    "passingGrade": 62,
+    "capacity": 100,
+    "description": "Program studi yang mempelajari diplomasi, politik internasional, dan hubungan antar negara",
+    "careerProspects": ["Diplomat", "International Relations Officer", "Policy Analyst", "NGO Worker"],
+    "requiredSubjects": [
+      { "name": "Bahasa Inggris", "weight": 25, "minScore": 80, "reason": "Bahasa diplomasi internasional" },
+      { "name": "Sejarah", "weight": 20, "minScore": 75, "reason": "Memahami sejarah hubungan internasional" },
+      { "name": "Geografi", "weight": 15, "minScore": 73, "reason": "Geopolitik dan geostrategi" }
+    ]
+  },
+  {
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Manajemen",
+    "category": "IPS",
+    "passingGrade": 60,
+    "capacity": 150,
+    "description": "Program studi yang mempelajari pengelolaan organisasi, strategi bisnis, dan kepemimpinan",
+    "careerProspects": ["Manager", "Business Analyst", "Entrepreneur", "HR Manager"],
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 25, "minScore": 75, "reason": "Dasar manajemen bisnis" },
+      { "name": "Matematika (Umum)", "weight": 15, "minScore": 72, "reason": "Analisis kuantitatif" },
+      { "name": "Bahasa Inggris", "weight": 15, "minScore": 72, "reason": "Bisnis internasional" }
+    ]
+  },
+  {
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Agribisnis",
+    "category": "IPS",
+    "passingGrade": 58,
+    "capacity": 110,
+    "description": "Program studi yang mempelajari bisnis pertanian, manajemen agribisnis, dan ekonomi pertanian",
+    "careerProspects": ["Agribusiness Manager", "Agricultural Consultant", "Farm Manager", "Agribusiness Analyst"],
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 20, "minScore": 73, "reason": "Dasar ekonomi pertanian" },
+      { "name": "Biologi", "weight": 20, "minScore": 73, "reason": "Memahami sistem pertanian" },
+      { "name": "Matematika (Umum)", "weight": 15, "minScore": 70, "reason": "Analisis bisnis" }
+    ]
+  },
+  {
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Agroteknologi",
+    "category": "IPA",
+    "passingGrade": 57,
+    "capacity": 100,
+    "description": "Program studi yang mempelajari teknologi budidaya tanaman dan pengelolaan lahan pertanian",
+    "careerProspects": ["Agricultural Engineer", "Crop Specialist", "Farm Consultant", "Agricultural Researcher"],
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25, "minScore": 73, "reason": "Dasar ilmu tanaman" },
+      { "name": "Kimia", "weight": 20, "minScore": 70, "reason": "Penting untuk pemupukan dan pestisida" },
+      { "name": "Matematika (Umum)", "weight": 15, "minScore": 68, "reason": "Perhitungan hasil panen" }
+    ]
+  },
+  {
+    "university": "Universitas Diponegoro (Undip)",
+    "major": "Psikologi",
+    "category": "IPS",
+    "passingGrade": 61,
+    "capacity": 120,
+    "description": "Program studi yang mempelajari perilaku manusia, mental health, dan konseling",
+    "careerProspects": ["Psikolog", "HR Specialist", "Counselor", "Organizational Psychologist"],
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 20, "minScore": 75, "reason": "Dasar psikologi biologis" },
+      { "name": "Sosiologi", "weight": 20, "minScore": 75, "reason": "Memahami perilaku sosial" },
+      { "name": "Bahasa Indonesia", "weight": 15, "minScore": 73, "reason": "Komunikasi terapeutik" }
+    ]
+  },
+  {
+    "university": "Universitas Diponegoro (Undip)",
+    "major": "Teknik Industri",
+    "category": "IPA",
+    "passingGrade": 60,
+    "capacity": 110,
+    "description": "Program studi yang mempelajari optimasi sistem produksi, manajemen operasi, dan ergonomi",
+    "careerProspects": ["Industrial Engineer", "Production Manager", "Quality Engineer", "Supply Chain Manager"],
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25, "minScore": 75, "reason": "Dasar optimasi dan statistik" },
+      { "name": "Fisika", "weight": 20, "minScore": 73, "reason": "Memahami sistem produksi" },
+      { "name": "Bahasa Inggris", "weight": 10, "minScore": 70, "reason": "Standar industri internasional" }
+    ]
+  }
+]

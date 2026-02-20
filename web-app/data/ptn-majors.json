@@ -1,0 +1,222 @@
+[
+  {
+    "university": "Universitas Indonesia (UI)",
+    "name": "Teknik Informatika",
+    "category": "IPA",
+    "passingGrade": 65,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25 },
+      { "name": "Fisika", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "name": "Kedokteran",
+    "category": "IPA",
+    "passingGrade": 70,
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25 },
+      { "name": "Kimia", "weight": 25 },
+      { "name": "Fisika", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Bandung (ITB)",
+    "name": "Teknik Elektro",
+    "category": "IPA",
+    "passingGrade": 65,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25 },
+      { "name": "Fisika", "weight": 25 },
+      { "name": "Bahasa Inggris", "weight": 10 }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Bandung (ITB)",
+    "name": "Teknik Kimia",
+    "category": "IPA",
+    "passingGrade": 63,
+    "requiredSubjects": [
+      { "name": "Kimia", "weight": 25 },
+      { "name": "Matematika (Umum)", "weight": 20 },
+      { "name": "Fisika", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "name": "Teknik Mesin",
+    "category": "IPA",
+    "passingGrade": 62,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25 },
+      { "name": "Fisika", "weight": 25 },
+      { "name": "Kimia", "weight": 10 }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "name": "Farmasi",
+    "category": "IPA",
+    "passingGrade": 64,
+    "requiredSubjects": [
+      { "name": "Kimia", "weight": 25 },
+      { "name": "Biologi", "weight": 20 },
+      { "name": "Matematika (Umum)", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "name": "Teknik Informatika",
+    "category": "IPA",
+    "passingGrade": 63,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25 },
+      { "name": "Fisika", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Airlangga (Unair)",
+    "name": "Kedokteran Gigi",
+    "category": "IPA",
+    "passingGrade": 65,
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25 },
+      { "name": "Kimia", "weight": 20 },
+      { "name": "Fisika", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "name": "Ekonomi",
+    "category": "IPS",
+    "passingGrade": 63,
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 25 },
+      { "name": "Matematika (Umum)", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "name": "Hukum",
+    "category": "IPS",
+    "passingGrade": 64,
+    "requiredSubjects": [
+      { "name": "Bahasa Indonesia", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 20 },
+      { "name": "Sejarah", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "name": "Akuntansi",
+    "category": "IPS",
+    "passingGrade": 62,
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 25 },
+      { "name": "Matematika (Umum)", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 10 }
+    ]
+  },
+  {
+    "university": "Universitas Padjadjaran (Unpad)",
+    "name": "Ilmu Komunikasi",
+    "category": "IPS",
+    "passingGrade": 61,
+    "requiredSubjects": [
+      { "name": "Bahasa Indonesia", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 20 },
+      { "name": "Sosiologi", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Brawijaya (UB)",
+    "name": "Manajemen",
+    "category": "IPS",
+    "passingGrade": 60,
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 25 },
+      { "name": "Matematika (Umum)", "weight": 15 },
+      { "name": "Bahasa Inggris", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Diponegoro (Undip)",
+    "name": "Psikologi",
+    "category": "IPS",
+    "passingGrade": 61,
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 20 },
+      { "name": "Sosiologi", "weight": 20 },
+      { "name": "Bahasa Indonesia", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Institut Teknologi Bandung (ITB)",
+    "name": "Matematika",
+    "category": "IPA",
+    "passingGrade": 62,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 30 },
+      { "name": "Fisika", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 10 }
+    ]
+  },
+  {
+    "university": "Universitas Indonesia (UI)",
+    "name": "Ilmu Komputer",
+    "category": "IPA",
+    "passingGrade": 64,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 25 },
+      { "name": "Fisika", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Gadjah Mada (UGM)",
+    "name": "Arsitektur",
+    "category": "IPA",
+    "passingGrade": 61,
+    "requiredSubjects": [
+      { "name": "Matematika (Umum)", "weight": 20 },
+      { "name": "Fisika", "weight": 20 },
+      { "name": "Bahasa Inggris", "weight": 10 }
+    ]
+  },
+  {
+    "university": "Universitas Airlangga (Unair)",
+    "name": "Kesehatan Masyarakat",
+    "category": "IPA",
+    "passingGrade": 60,
+    "requiredSubjects": [
+      { "name": "Biologi", "weight": 25 },
+      { "name": "Kimia", "weight": 15 },
+      { "name": "Matematika (Umum)", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Padjadjaran (Unpad)",
+    "name": "Hubungan Internasional",
+    "category": "IPS",
+    "passingGrade": 62,
+    "requiredSubjects": [
+      { "name": "Bahasa Inggris", "weight": 25 },
+      { "name": "Sejarah", "weight": 20 },
+      { "name": "Geografi", "weight": 15 }
+    ]
+  },
+  {
+    "university": "Universitas Brawijaya (UB)",
+    "name": "Agribisnis",
+    "category": "IPS",
+    "passingGrade": 58,
+    "requiredSubjects": [
+      { "name": "Ekonomi", "weight": 20 },
+      { "name": "Biologi", "weight": 20 },
+      { "name": "Matematika (Umum)", "weight": 15 }
+    ]
+  }
+]

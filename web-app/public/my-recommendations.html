@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendasi Saya - Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Rekomendasi PTN & Jurusan</h1>
+            <p>Analisis nilai dan rekomendasi jurusan untuk Anda</p>
+            <nav class="main-nav">
+                <a href="input-grades.html" class="nav-link">Input Nilai</a>
+                <a href="my-recommendations.html" class="nav-link active">Rekomendasi Saya</a>
+            </nav>
+            <div class="user-info">
+                <span id="userRole"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <!-- Student Info Card -->
+        <section class="card">
+            <h2>📋 Informasi Siswa</h2>
+            <div id="studentInfo" class="info-grid">
+                <div class="info-item">
+                    <strong>Nama:</strong>
+                    <span id="studentName">-</span>
+                </div>
+                <div class="info-item">
+                    <strong>NISN:</strong>
+                    <span id="studentNISN">-</span>
+                </div>
+                <div class="info-item">
+                    <strong>Kelas:</strong>
+                    <span id="studentClass">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Card -->
+        <section class="card">
+            <h2>📊 Analisis Nilai</h2>
+            <div id="analysisSection">
+                <div class="loading">Memuat data...</div>
+            </div>
+        </section>
+
+        <!-- Semester Progress -->
+        <section class="card" id="semesterProgressCard" style="display: none;">
+            <h2>📈 Perkembangan Nilai Per Semester</h2>
+            <div id="semesterProgress"></div>
+        </section>
+
+        <!-- Recommendations Card -->
+        <section class="card">
+            <h2>🎓 Rekomendasi PTN dan Jurusan</h2>
+            <div id="recommendationsSection">
+                <div class="loading">Memuat rekomendasi...</div>
+            </div>
+        </section>
+
+        <!-- Download PDF Button -->
+        <section class="card" style="text-align: center;">
+            <button class="btn btn-primary btn-large" onclick="downloadPDF()" id="downloadBtn" style="display: none;">
+                📥 Cetak PDF Laporan
+            </button>
+            <p style="color: #666; margin-top: 10px;">
+                Laporan PDF berisi analisis lengkap nilai dan rekomendasi jurusan
+            </p>
+        </section>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let sessionId = localStorage.getItem('sessionId');
+        let studentId = localStorage.getItem('studentId');
+        let studentData = null;
+
+        // Check authentication
+        if (!sessionId || !studentId) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('userRole').textContent = '👤 Siswa';
+
+        function logout() {
+            fetch(`${API_URL}/logout`, {
+                method: 'POST',
+                headers: { 'x-session-id': sessionId }
+            }).then(() => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        }
+
+        async function loadStudentData() {
+            try {
+                const response = await fetch(`${API_URL}/students/${studentId}/analysis`, {
+                    headers: {
+                        'x-session-id': sessionId
+                    }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    studentData = result;
+                    displayStudentInfo(result.student);
+                    displayAnalysis(result.analysis);
+                    loadRecommendations();
+                } else {
+                    document.getElementById('analysisSection').innerHTML = 
+                        '<p class="error-message">Belum ada data nilai. Silakan input nilai terlebih dahulu.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading student data:', error);
+                document.getElementById('analysisSection').innerHTML = 
+                    '<p class="error-message">Gagal memuat data. Silakan coba lagi.</p>';
+            }
+        }
+
+        function displayStudentInfo(student) {
+            document.getElementById('studentName').textContent = student.nama || '-';
+            document.getElementById('studentNISN').textContent = student.nisn || '-';
+            document.getElementById('studentClass').textContent = student.kelas || '-';
+        }
+
+        function displayAnalysis(analysis) {
+            const section = document.getElementById('analysisSection');
+
+            if (!analysis || analysis.average === 0) {
+                section.innerHTML = '<p class="info-message">Belum ada data nilai untuk dianalisis.</p>';
+                return;
+            }
+
+            let html = '<div class="analysis-grid">';
+
+            // Overall Average
+            html += `
+                <div class="analysis-card">
+                    <div class="analysis-icon">📊</div>
+                    <div class="analysis-label">Rata-rata Keseluruhan</div>
+                    <div class="analysis-value">${analysis.average.toFixed(2)}</div>
+                </div>
+            `;
+
+            // Highest Subject
+            if (analysis.highest) {
+                html += `
+                    <div class="analysis-card success">
+                        <div class="analysis-icon">⭐</div>
+                        <div class="analysis-label">Mata Pelajaran Terbaik</div>
+                        <div class="analysis-value">${analysis.highest.subject}</div>
+                        <div class="analysis-detail">${analysis.highest.value}</div>
+                    </div>
+                `;
+            }
+
+            // Lowest Subject
+            if (analysis.lowest) {
+                html += `
+                    <div class="analysis-card warning">
+                        <div class="analysis-icon">📚</div>
+                        <div class="analysis-label">Perlu Ditingkatkan</div>
+                        <div class="analysis-value">${analysis.lowest.subject}</div>
+                        <div class="analysis-detail">${analysis.lowest.value}</div>
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+
+            // Semester Progress
+            if (analysis.semesterProgress && analysis.semesterProgress.length > 0) {
+                html += '<div class="semester-progress-table">';
+                html += '<h3>Perkembangan Per Semester</h3>';
+                html += '<table class="data-table">';
+                html += '<thead><tr><th>Semester</th><th>Rata-rata</th><th>Status</th></tr></thead>';
+                html += '<tbody>';
+
+                analysis.semesterProgress.forEach((sem, index) => {
+                    let status = '📊';
+                    let statusText = 'Stabil';
+                    
+                    if (index > 0) {
+                        const prev = analysis.semesterProgress[index - 1];
+                        if (sem.average > prev.average) {
+                            status = '📈';
+                            statusText = 'Meningkat';
+                        } else if (sem.average < prev.average) {
+                            status = '📉';
+                            statusText = 'Menurun';
+                        }
+                    }
+
+                    html += `
+                        <tr>
+                            <td>Semester ${sem.semester}</td>
+                            <td>${sem.average.toFixed(2)}</td>
+                            <td>${status} ${statusText}</td>
+                        </tr>
+                    `;
+                });
+
+                html += '</tbody></table></div>';
+            }
+
+            section.innerHTML = html;
+        }
+
+        async function loadRecommendations() {
+            try {
+                const response = await fetch(`${API_URL}/students/${studentId}/recommendations`, {
+                    headers: {
+                        'x-session-id': sessionId
+                    }
+                });
+
+                const result = await response.json();
+
+                if (result.success && result.recommendations.length > 0) {
+                    displayRecommendations(result.recommendations);
+                    document.getElementById('downloadBtn').style.display = 'inline-block';
+                } else {
+                    document.getElementById('recommendationsSection').innerHTML = 
+                        '<p class="info-message">Belum ada rekomendasi. Pastikan Anda sudah menginput nilai.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading recommendations:', error);
+                document.getElementById('recommendationsSection').innerHTML = 
+                    '<p class="error-message">Gagal memuat rekomendasi.</p>';
+            }
+        }
+
+        function displayRecommendations(recommendations) {
+            const section = document.getElementById('recommendationsSection');
+            
+            let html = '<div class="recommendations-list">';
+
+            recommendations.slice(0, 10).forEach((rec, index) => {
+                html += `
+                    <div class="recommendation-card">
+                        <div class="rec-rank">#${index + 1}</div>
+                        <div class="rec-content">
+                            <h3>${rec.major}</h3>
+                            <p class="rec-university">🏛️ ${rec.university}</p>
+                            <div class="rec-details">
+                                <span class="rec-badge">Match: ${rec.matchScore}%</span>
+                                <span class="rec-badge">Passing Grade: ${rec.passingGrade}</span>
+                            </div>
+                            ${rec.reasons && rec.reasons.length > 0 ? `
+                                <div class="rec-reasons">
+                                    ${rec.reasons.slice(0, 3).map(r => `
+                                        <div class="reason-item">${r.icon} ${r.message}</div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            section.innerHTML = html;
+        }
+
+        function downloadPDF() {
+            if (!studentId) {
+                alert('Data siswa tidak ditemukan');
+                return;
+            }
+
+            // Show loading
+            const btn = document.getElementById('downloadBtn');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Membuat PDF...';
+            btn.disabled = true;
+
+            // Create a temporary link to download with proper headers
+            fetch(`${API_URL}/students/${studentId}/download-pdf`, {
+                method: 'GET',
+                headers: {
+                    'x-session-id': sessionId
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Gagal membuat PDF');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                // Create download link
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Rekomendasi_${studentData.student.nama.replace(/ /g, '_')}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+
+                // Reset button
+                btn.textContent = originalText;
+                btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error downloading PDF:', error);
+                alert('Gagal membuat PDF. Silakan coba lagi.');
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
+        }
+
+        // Load data on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadStudentData();
+        });
+    </script>
+
+    <style>
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .analysis-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .analysis-card.success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .analysis-card.warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .analysis-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .analysis-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .analysis-value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .analysis-detail {
+            font-size: 1.2em;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .semester-progress-table {
+            margin-top: 30px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .recommendations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .recommendation-card {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .recommendation-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .rec-rank {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 50px;
+        }
+
+        .rec-content {
+            flex: 1;
+        }
+
+        .rec-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .rec-university {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .rec-details {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .rec-badge {
+            padding: 5px 12px;
+            background: #f0f3ff;
+            color: #667eea;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .rec-reasons {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .reason-item {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.2em;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error-message {
+            padding: 20px;
+            background: #fee;
+            color: #c33;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .info-message {
+            padding: 20px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-rank {
+                font-size: 1.5em;
+                min-width: 40px;
+            }
+        }
+    </style>
+</body>
+</html>
