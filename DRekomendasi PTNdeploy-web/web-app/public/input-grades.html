@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Nilai - Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Input Nilai Semester</h1>
+            <p>Masukkan nilai Anda untuk mendapatkan rekomendasi jurusan</p>
+            <div class="user-info">
+                <span id="userRole"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Pilih Semester</h2>
+            <p style="color: #666; margin-bottom: 10px;">Pilih semester yang ingin Anda input nilainya</p>
+            <div class="semester-selector">
+                <button class="semester-btn active" onclick="selectSemester(1)">Semester 1</button>
+                <button class="semester-btn" onclick="selectSemester(2)">Semester 2</button>
+                <button class="semester-btn" onclick="selectSemester(3)">Semester 3</button>
+                <button class="semester-btn" onclick="selectSemester(4)">Semester 4</button>
+                <button class="semester-btn" onclick="selectSemester(5)">Semester 5</button>
+                <button class="semester-btn" onclick="selectSemester(6)">Semester 6</button>
+            </div>
+            <div id="semesterInfo" style="margin-top: 10px; padding: 10px; background: #f0f3ff; border-radius: 5px;">
+                <strong>Semester yang dipilih: <span id="currentSemesterDisplay">1</span></strong>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Input Nilai Mata Pelajaran</h2>
+            <form id="gradesForm">
+                <div class="grades-grid">
+                    <div class="form-group">
+                        <label>Pendidikan Pancasila</label>
+                        <input type="number" name="Pendidikan Pancasila" min="0" max="100" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bahasa Indonesia</label>
+                        <input type="number" name="Bahasa Indonesia" min="0" max="100" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bahasa Inggris</label>
+                        <input type="number" name="Bahasa Inggris" min="0" max="100" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Matematika (Umum)</label>
+                        <input type="number" name="Matematika (Umum)" min="0" max="100" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fisika</label>
+                        <input type="number" name="Fisika" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Kimia</label>
+                        <input type="number" name="Kimia" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Biologi</label>
+                        <input type="number" name="Biologi" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Ekonomi</label>
+                        <input type="number" name="Ekonomi" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Geografi</label>
+                        <input type="number" name="Geografi" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Sosiologi</label>
+                        <input type="number" name="Sosiologi" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Sejarah</label>
+                        <input type="number" name="Sejarah" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Informatika</label>
+                        <input type="number" name="Informatika" min="0" max="100" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Pendidikan Jasmani, Olahraga, dan Kesehatan</label>
+                        <input type="number" name="Pendidikan Jasmani, Olahraga, dan Kesehatan" min="0" max="100" step="0.01">
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    <button type="submit" class="btn btn-primary">Simpan Nilai</button>
+                    <button type="button" class="btn btn-secondary" onclick="viewRecommendations()">Lihat Rekomendasi</button>
+                </div>
+                
+                <div id="message" class="status-message"></div>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let sessionId = localStorage.getItem('sessionId');
+        let studentId = localStorage.getItem('studentId');
+        let currentSemester = 1; // Start with semester 1
+
+        // Check authentication
+        if (!sessionId) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('userRole').textContent = '👤 Siswa';
+
+        function logout() {
+            fetch(`${API_URL}/logout`, {
+                method: 'POST',
+                headers: { 'x-session-id': sessionId }
+            }).then(() => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        }
+
+        function selectSemester(semester) {
+            currentSemester = semester;
+            
+            // Update button states
+            document.querySelectorAll('.semester-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update display
+            document.getElementById('currentSemesterDisplay').textContent = semester;
+            
+            // Clear form
+            document.getElementById('gradesForm').reset();
+            
+            // Load existing grades if any
+            loadGrades(semester);
+        }
+
+        async function loadGrades(semester) {
+            try {
+                const response = await fetch(`${API_URL}/students/${studentId}/analysis`, {
+                    headers: {
+                        'x-session-id': sessionId
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.student.grades) {
+                    const semesterGrade = result.student.grades.find(g => g.semester === semester);
+                    
+                    if (semesterGrade && semesterGrade.subjects) {
+                        // Fill form with existing grades
+                        const form = document.getElementById('gradesForm');
+                        Object.keys(semesterGrade.subjects).forEach(subject => {
+                            const input = form.querySelector(`input[name="${subject}"]`);
+                            if (input) {
+                                input.value = semesterGrade.subjects[subject];
+                            }
+                        });
+                        
+                        showMessage(`Nilai semester ${semester} sudah ada. Anda dapat mengubahnya.`, 'success');
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading grades:', error);
+            }
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `status-message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        document.getElementById('gradesForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const subjects = {};
+            
+            // Only include filled fields
+            for (let [key, value] of formData.entries()) {
+                if (value && value.trim() !== '') {
+                    subjects[key] = parseFloat(value);
+                }
+            }
+            
+            // Check if at least some subjects are filled
+            if (Object.keys(subjects).length === 0) {
+                showMessage('Harap isi minimal satu mata pelajaran', 'error');
+                return;
+            }
+            
+            showMessage('Menyimpan nilai...', 'success');
+            
+            try {
+                const response = await fetch(`${API_URL}/students/${studentId}/grades`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-session-id': sessionId
+                    },
+                    body: JSON.stringify({
+                        semester: currentSemester,
+                        subjects: subjects
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage(`✓ ${result.message}`, 'success');
+                } else {
+                    showMessage(`✗ ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`✗ Error: ${error.message}`, 'error');
+            }
+        });
+
+        function viewRecommendations() {
+            window.location.href = 'my-recommendations.html';
+        }
+        
+        // Load grades for semester 1 on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadGrades(1);
+        });
+    </script>
+
+    <style>
+        .semester-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .semester-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .semester-btn:hover {
+            background: #f0f3ff;
+        }
+
+        .semester-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+    </style>
+</body>
+</html>

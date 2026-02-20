@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- School Identity -->
+            <div class="school-header">
+                <div class="school-logo-small" id="schoolLogoHeader">
+                    <span class="logo-placeholder-small">🏫</span>
+                </div>
+                <div class="school-info">
+                    <h3 class="school-name-header">SMA Negeri 1 Telukdalam</h3>
+                    <p class="school-subtitle">Sistem Rekomendasi Jurusan PTN</p>
+                </div>
+            </div>
+            
+            <h1>🎓 Sistem Rekomendasi Jurusan PTN</h1>
+            <p>Analisis nilai siswa dan rekomendasi jurusan PTN terbaik</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Beranda</a>
+                <a href="admin-users.html" class="nav-link" id="adminUsersLink" style="display: none;">Kelola User</a>
+                <a href="upload-simple.html" class="nav-link" id="uploadSimpleLink" style="display: none;">🧪 Upload Test</a>
+                <a href="input-grades.html" class="nav-link" id="inputGradesLink" style="display: none;">Input Nilai</a>
+                <a href="ptn-jurusan-simple.html" class="nav-link">PTN & Jurusan</a>
+                <a href="subjects-database.html" class="nav-link">Database Mata Pelajaran</a>
+            </nav>
+            <div class="user-info">
+                <span id="userRole"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <!-- Application Description -->
+        <section class="card app-description">
+            <h2>📖 Tentang Aplikasi</h2>
+            <p>
+                Aplikasi Rekomendasi PTN dan Jurusan dibuat untuk membantu siswa menentukan pilihan 
+                Perguruan Tinggi Negeri (PTN) dan program studi yang sesuai dengan kemampuan akademik mereka. 
+                Banyak siswa mengalami kebingungan dalam memilih jurusan karena kurangnya analisis terhadap 
+                nilai dan tingkat persaingan masuk PTN.
+            </p>
+            <p>
+                Melalui sistem ini, data nilai siswa dianalisis secara otomatis untuk menghasilkan rekomendasi 
+                kampus dan jurusan yang realistis, terukur, dan sesuai dengan performa akademik. Aplikasi ini 
+                juga membantu guru dan pihak sekolah dalam memberikan arahan yang lebih objektif dan berbasis 
+                data kepada siswa.
+            </p>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <div class="card">
+                <h2>📤 Upload Data Siswa</h2>
+                <p>Upload file Excel yang berisi data nilai siswa</p>
+                <form id="uploadForm">
+                    <input type="file" id="fileInput" accept=".xlsx,.xls" required>
+                    <button type="submit" class="btn btn-primary">Upload File</button>
+                </form>
+                <div id="uploadStatus" class="status-message"></div>
+            </div>
+        </section>
+
+        <!-- Students List Section -->
+        <section class="students-section" id="studentsSection" style="display: none;">
+            <div class="card">
+                <h2>👥 Daftar Siswa</h2>
+                
+                <!-- Class Filter -->
+                <div class="filter-section">
+                    <label for="classFilter">Filter Kelas:</label>
+                    <select id="classFilter" onchange="filterByClass()">
+                        <option value="all">Semua Kelas</option>
+                    </select>
+                    <span id="classStats" class="class-stats"></span>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Cari nama siswa...">
+                </div>
+                <div id="studentsList" class="students-list"></div>
+            </div>
+        </section>
+
+        <!-- Student Detail Section -->
+        <section class="detail-section" id="detailSection" style="display: none;">
+            <button class="btn btn-secondary" onclick="backToList()">← Kembali ke Daftar</button>
+            <button class="btn btn-primary" onclick="downloadPDF()" style="float: right;">📥 Download PDF</button>
+            
+            <div class="card">
+                <h2>📊 Analisis Nilai Siswa</h2>
+                <div id="studentInfo"></div>
+                <div id="analysisResult"></div>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Rekomendasi Jurusan PTN</h2>
+                <div id="recommendationsList"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        console.log('=== INLINE SCRIPT START ===');
+        
+        // Check auth and redirect
+        const sessionId = localStorage.getItem('sessionId');
+        const userRole = localStorage.getItem('role');
+        
+        console.log('Session ID:', sessionId);
+        console.log('User Role:', userRole);
+        
+        if (!sessionId) {
+            console.log('No session, redirecting to login');
+            window.location.href = 'login.html';
+        }
+        
+        // Immediately show admin menu if admin
+        if (userRole === 'admin') {
+            console.log('User is admin - showing admin menus immediately');
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log('DOM loaded - setting up admin UI');
+                
+                // Show user role
+                const userRoleSpan = document.getElementById('userRole');
+                if (userRoleSpan) {
+                    userRoleSpan.textContent = '👤 Admin';
+                    console.log('Set user role text to Admin');
+                }
+                
+                // Show admin links
+                const adminUsersLink = document.getElementById('adminUsersLink');
+                if (adminUsersLink) {
+                    adminUsersLink.style.display = 'inline-block';
+                    console.log('Showed Kelola User link');
+                }
+                
+                const uploadSimpleLink = document.getElementById('uploadSimpleLink');
+                if (uploadSimpleLink) {
+                    uploadSimpleLink.style.display = 'inline-block';
+                    console.log('Showed Upload Test link');
+                }
+                
+                // Load school logo
+                if (typeof loadSchoolLogo === 'function') {
+                    loadSchoolLogo('schoolLogoHeader');
+                    console.log('Loaded school logo');
+                }
+                
+                console.log('=== ADMIN UI SETUP COMPLETE ===');
+            });
+        } else if (userRole === 'student') {
+            console.log('User is student');
+            document.addEventListener('DOMContentLoaded', () => {
+                const userRoleSpan = document.getElementById('userRole');
+                if (userRoleSpan) {
+                    userRoleSpan.textContent = '👤 Siswa';
+                }
+                
+                const inputGradesLink = document.getElementById('inputGradesLink');
+                if (inputGradesLink) {
+                    inputGradesLink.style.display = 'inline-block';
+                }
+                
+                // Hide upload section for students
+                const uploadSection = document.getElementById('uploadSection');
+                if (uploadSection) {
+                    uploadSection.style.display = 'none';
+                }
+                
+                if (typeof loadSchoolLogo === 'function') {
+                    loadSchoolLogo('schoolLogoHeader');
+                }
+            });
+        }
+        
+        console.log('=== INLINE SCRIPT END ===');
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

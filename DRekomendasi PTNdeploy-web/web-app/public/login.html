@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .school-identity {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .school-logo {
+            margin-bottom: 15px;
+        }
+        
+        .logo-placeholder {
+            font-size: 4em;
+            display: inline-block;
+        }
+        
+        .school-logo img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 10px;
+        }
+        
+        .school-name {
+            color: #667eea;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+        }
+        
+        .school-tagline {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header h1 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .login-header p {
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .login-info {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        .login-info h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .login-info p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- School Identity -->
+            <div class="school-identity">
+                <div class="school-logo" id="schoolLogo">
+                    <span class="logo-placeholder">🏫</span>
+                </div>
+                <h3 class="school-name">SMA Negeri 1 Telukdalam</h3>
+                <p class="school-tagline">Sistem Rekomendasi Jurusan PTN</p>
+            </div>
+            
+            <div class="login-header">
+                <h1>🎓 Login</h1>
+                <p>Silakan masuk untuk melanjutkan</p>
+            </div>
+            
+            <div id="alertMessage" class="alert"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="Admin atau Nama Siswa">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Password atau NISN">
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <div class="login-info">
+                <h4>Informasi Login:</h4>
+                <p><strong>Admin:</strong></p>
+                <p>Username: admin</p>
+                <p>Password: admin123</p>
+                <br>
+                <p><strong>Siswa:</strong></p>
+                <p>Username: Nama lengkap Anda</p>
+                <p>Password: NISN Anda</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            showAlert('Logging in...', 'success');
+            
+            try {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Store session
+                    localStorage.setItem('sessionId', result.sessionId);
+                    localStorage.setItem('role', result.role);
+                    if (result.studentId) {
+                        localStorage.setItem('studentId', result.studentId);
+                    }
+                    
+                    showAlert(result.message, 'success');
+                    
+                    // Redirect to main page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(result.message, 'error');
+                }
+            } catch (error) {
+                showAlert('Error: ' + error.message, 'error');
+            }
+        });
+        
+        function showAlert(message, type) {
+            const alertDiv = document.getElementById('alertMessage');
+            alertDiv.textContent = message;
+            alertDiv.className = `alert ${type}`;
+        }
+        
+        // Check if already logged in
+        if (localStorage.getItem('sessionId')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Load school logo if exists
+        const savedLogo = localStorage.getItem('schoolLogo');
+        if (savedLogo) {
+            document.getElementById('schoolLogo').innerHTML = `<img src="${savedLogo}" alt="Logo Sekolah">`;
+        }
+    </script>
+</body>
+</html>

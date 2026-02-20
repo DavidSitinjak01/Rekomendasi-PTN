@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Mata Pelajaran - Sistem Rekomendasi Jurusan PTN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Database Mata Pelajaran</h1>
+            <p>Daftar mata pelajaran lengkap dengan deskripsi dan relevansi jurusan</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="ptn-database.html" class="nav-link">Database PTN</a>
+                <a href="majors-database.html" class="nav-link">Database Jurusan</a>
+                <a href="subjects-database.html" class="nav-link active">Database Mata Pelajaran</a>
+            </nav>
+            <div class="user-info">
+                <span id="userRole"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="filter-bar">
+                <label for="categoryFilter">Filter Kategori:</label>
+                <select id="categoryFilter" onchange="filterSubjects()">
+                    <option value="all">Semua Kategori</option>
+                    <option value="IPA">IPA</option>
+                    <option value="IPS">IPS</option>
+                    <option value="Bahasa">Bahasa</option>
+                    <option value="Umum">Umum</option>
+                </select>
+                <span id="subjectCount" style="margin-left: auto; font-weight: 600;"></span>
+            </div>
+
+            <div id="subjectsList" class="database-grid"></div>
+        </section>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let sessionId = localStorage.getItem('sessionId');
+        let userRole = localStorage.getItem('role');
+        let allSubjects = [];
+
+        // Check authentication
+        if (!sessionId) {
+            window.location.href = 'login.html';
+        }
+
+        // Display user info
+        document.getElementById('userRole').textContent = userRole === 'admin' ? '👤 Admin' : '👤 Siswa';
+
+        function logout() {
+            fetch(`${API_URL}/logout`, {
+                method: 'POST',
+                headers: { 'x-session-id': sessionId }
+            }).then(() => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        }
+
+        async function loadSubjects() {
+            try {
+                const response = await fetch(`${API_URL}/subjects`, {
+                    headers: { 'x-session-id': sessionId }
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    allSubjects = result.data;
+                    displaySubjects(allSubjects);
+                }
+            } catch (error) {
+                console.error('Error loading subjects:', error);
+            }
+        }
+
+        function displaySubjects(subjectsList) {
+            const container = document.getElementById('subjectsList');
+            document.getElementById('subjectCount').textContent = `Total: ${subjectsList.length} Mata Pelajaran`;
+            
+            if (subjectsList.length === 0) {
+                container.innerHTML = '<p>Tidak ada data mata pelajaran</p>';
+                return;
+            }
+            
+            container.innerHTML = subjectsList.map(subject => {
+                const relatedMajorsHTML = subject.relatedMajors && subject.relatedMajors.length > 0 ?
+                    `<p><strong>Jurusan Terkait:</strong> ${subject.relatedMajors.join(', ')}</p>` : '';
+                
+                return `
+                    <div class="database-card">
+                        <h3>${subject.name}</h3>
+                        <span class="badge ${
+                            subject.category === 'IPA' ? 'badge-ipa' : 
+                            subject.category === 'IPS' ? 'badge-ips' : 
+                            'badge-region'
+                        }">${subject.category}</span>
+                        <p style="margin-top: 15px; color: #666; line-height: 1.6;">${subject.description}</p>
+                        <p style="margin-top: 10px;"><strong>Kepentingan:</strong> ${subject.importance}</p>
+                        ${relatedMajorsHTML}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterSubjects() {
+            const category = document.getElementById('categoryFilter').value;
+            
+            if (category === 'all') {
+                displaySubjects(allSubjects);
+            } else {
+                const filtered = allSubjects.filter(s => s.category === category);
+                displaySubjects(filtered);
+            }
+        }
+
+        // Load data on page load
+        loadSubjects();
+    </script>
+</body>
+</html>

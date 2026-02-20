@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola User - Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- School Identity -->
+            <div class="school-header">
+                <div class="school-logo-small" id="schoolLogoHeader">
+                    <span class="logo-placeholder-small">🏫</span>
+                </div>
+                <div class="school-info">
+                    <h3 class="school-name-header">SMA Negeri 1 Telukdalam</h3>
+                    <p class="school-subtitle">Sistem Rekomendasi Jurusan PTN</p>
+                </div>
+            </div>
+            
+            <h1>👥 Kelola User</h1>
+            <p>Tambah, Edit, dan Hapus Data Siswa</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="admin-users.html" class="nav-link active">Kelola User</a>
+                <a href="school-settings.html" class="nav-link">Pengaturan Sekolah</a>
+                <a href="ptn-database.html" class="nav-link">Database PTN</a>
+                <a href="majors-database.html" class="nav-link">Database Jurusan</a>
+            </nav>
+            <div class="user-info">
+                <span id="userRole">👤 Admin</span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <!-- Add Student Section -->
+        <section class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>➕ Tambah Siswa Baru</h2>
+                <button class="btn btn-secondary" onclick="openChangePasswordModal()" style="margin: 0;">
+                    🔑 Ubah Password Admin
+                </button>
+            </div>
+            <form id="addStudentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="addNama">Nama Lengkap *</label>
+                        <input type="text" id="addNama" required placeholder="Masukkan nama lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="addNisn">NISN (Opsional)</label>
+                        <input type="text" id="addNisn" placeholder="Kosongkan jika tidak ada">
+                    </div>
+                    <div class="form-group">
+                        <label for="addKelas">Kelas *</label>
+                        <input type="text" id="addKelas" required placeholder="Contoh: XII">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah Siswa</button>
+                <div id="addMessage" class="status-message"></div>
+            </form>
+        </section>
+
+        <!-- Students List -->
+        <section class="card">
+            <h2>📋 Daftar Semua Siswa</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari nama atau NISN..." oninput="filterStudents()">
+            </div>
+            <div id="studentsTable"></div>
+        </section>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>✏️ Edit Data Siswa</h2>
+            <form id="editStudentForm">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label for="editNama">Nama Lengkap *</label>
+                    <input type="text" id="editNama" required>
+                </div>
+                <div class="form-group">
+                    <label for="editNisn">NISN</label>
+                    <input type="text" id="editNisn" placeholder="Kosongkan jika tidak ada">
+                </div>
+                <div class="form-group">
+                    <label for="editKelas">Kelas *</label>
+                    <input type="text" id="editKelas" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Batal</button>
+                <div id="editMessage" class="status-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeChangePasswordModal()">&times;</span>
+            <h2>🔑 Ubah Password Admin</h2>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="oldPassword">Password Lama *</label>
+                    <input type="password" id="oldPassword" required placeholder="Masukkan password lama">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Password Baru *</label>
+                    <input type="password" id="newPassword" required placeholder="Minimal 6 karakter">
+                    <small style="color: #666; margin-top: 5px;">Password baru minimal 6 karakter</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Konfirmasi Password Baru *</label>
+                    <input type="password" id="confirmPassword" required placeholder="Ketik ulang password baru">
+                </div>
+                <button type="submit" class="btn btn-primary">Ubah Password</button>
+                <button type="button" class="btn btn-secondary" onclick="closeChangePasswordModal()">Batal</button>
+                <div id="changePasswordMessage" class="status-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Load common.js first -->
+    <script src="common.js"></script>
+
+    <script>
+        let sessionId = localStorage.getItem('sessionId');
+        let userRole = localStorage.getItem('role');
+        let allStudents = [];
+
+        // Check authentication
+        if (!sessionId || userRole !== 'admin') {
+            alert('Akses ditolak. Hanya admin yang bisa mengakses halaman ini.');
+            window.location.href = 'login.html';
+        }
+
+        // Load all students
+        async function loadStudents() {
+            try {
+                console.log('Loading students from:', `${API_URL}/admin/students`);
+                console.log('Session ID:', sessionId);
+                
+                const response = await fetch(`${API_URL}/admin/students`, {
+                    headers: { 'x-session-id': sessionId }
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    console.error('Response is not JSON:', contentType);
+                    const text = await response.text();
+                    console.error('Response body:', text);
+                    throw new Error('Server returned non-JSON response');
+                }
+                
+                const result = await response.json();
+                console.log('Result:', result);
+                
+                if (result.success) {
+                    allStudents = result.students;
+                    displayStudents(allStudents);
+                } else {
+                    console.error('API returned error:', result.message);
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error loading students:', error);
+                alert('Gagal memuat data siswa. Silakan refresh halaman atau login ulang.');
+            }
+        }
+
+        // Display students in table
+        function displayStudents(students) {
+            const container = document.getElementById('studentsTable');
+            
+            if (students.length === 0) {
+                container.innerHTML = '<p>Belum ada data siswa</p>';
+                return;
+            }
+            
+            let html = `
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NISN</th>
+                            <th>Kelas</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            students.forEach((student, index) => {
+                html += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${student.nama}</td>
+                        <td>${student.nisn || '<span style="color: #999;">Tidak ada</span>'}</td>
+                        <td>${student.kelas}</td>
+                        <td>
+                            <button class="btn-small btn-view" onclick="viewStudentDetail('${student.id}')">👁️ Detail Siswa</button>
+                            <button class="btn-small btn-edit" onclick="openEditModal('${student.id}')">✏️ Edit</button>
+                            <button class="btn-small btn-delete" onclick="deleteStudent('${student.id}', '${student.nama}')">🗑️ Hapus</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        // Filter students
+        function filterStudents() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allStudents.filter(s => 
+                s.nama.toLowerCase().includes(searchTerm) ||
+                (s.nisn && s.nisn.toLowerCase().includes(searchTerm))
+            );
+            displayStudents(filtered);
+        }
+
+        // Add student
+        document.getElementById('addStudentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const nama = document.getElementById('addNama').value;
+            const nisn = document.getElementById('addNisn').value;
+            const kelas = document.getElementById('addKelas').value;
+            
+            const messageDiv = document.getElementById('addMessage');
+            messageDiv.textContent = 'Menambahkan siswa...';
+            messageDiv.className = 'status-message success';
+            messageDiv.style.display = 'block';
+            
+            try {
+                const response = await fetch(`${API_URL}/admin/students`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-session-id': sessionId
+                    },
+                    body: JSON.stringify({ nama, nisn, kelas })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    messageDiv.textContent = result.message;
+                    messageDiv.className = 'status-message success';
+                    document.getElementById('addStudentForm').reset();
+                    loadStudents();
+                } else {
+                    messageDiv.textContent = result.message;
+                    messageDiv.className = 'status-message error';
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Error: ' + error.message;
+                messageDiv.className = 'status-message error';
+            }
+        });
+
+        // Open edit modal
+        function openEditModal(studentId) {
+            const student = allStudents.find(s => s.id === studentId);
+            if (!student) return;
+            
+            document.getElementById('editId').value = student.id;
+            document.getElementById('editNama').value = student.nama;
+            document.getElementById('editNisn').value = student.nisn || '';
+            document.getElementById('editKelas').value = student.kelas;
+            
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        // Close edit modal
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+            document.getElementById('editMessage').style.display = 'none';
+        }
+
+        // Edit student
+        document.getElementById('editStudentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const id = document.getElementById('editId').value;
+            const nama = document.getElementById('editNama').value;
+            const nisn = document.getElementById('editNisn').value;
+            const kelas = document.getElementById('editKelas').value;
+            
+            const messageDiv = document.getElementById('editMessage');
+            messageDiv.textContent = 'Menyimpan perubahan...';
+            messageDiv.className = 'status-message success';
+            messageDiv.style.display = 'block';
+            
+            try {
+                const response = await fetch(`${API_URL}/admin/students/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-session-id': sessionId
+                    },
+                    body: JSON.stringify({ nama, nisn, kelas })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    messageDiv.textContent = result.message;
+                    messageDiv.className = 'status-message success';
+                    setTimeout(() => {
+                        closeEditModal();
+                        loadStudents();
+                    }, 1500);
+                } else {
+                    messageDiv.textContent = result.message;
+                    messageDiv.className = 'status-message error';
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Error: ' + error.message;
+                messageDiv.className = 'status-message error';
+            }
+        });
+
+        // Delete student
+        async function deleteStudent(studentId, studentName) {
+            if (!confirm(`Apakah Anda yakin ingin menghapus siswa "${studentName}"?\n\nSemua data nilai siswa ini juga akan terhapus!`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/admin/students/${studentId}`, {
+                    method: 'DELETE',
+                    headers: { 'x-session-id': sessionId }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(result.message);
+                    loadStudents();
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // View student detail
+        function viewStudentDetail(studentId) {
+            // Redirect to detail page with student ID
+            window.location.href = `admin-student-detail.html?id=${studentId}`;
+        }
+
+        // Open change password modal
+        function openChangePasswordModal() {
+            document.getElementById('changePasswordModal').style.display = 'block';
+            document.getElementById('changePasswordForm').reset();
+            document.getElementById('changePasswordMessage').style.display = 'none';
+        }
+
+        // Close change password modal
+        function closeChangePasswordModal() {
+            document.getElementById('changePasswordModal').style.display = 'none';
+            document.getElementById('changePasswordMessage').style.display = 'none';
+        }
+
+        // Change admin password
+        document.getElementById('changePasswordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const oldPassword = document.getElementById('oldPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            const messageDiv = document.getElementById('changePasswordMessage');
+            
+            // Validate passwords match
+            if (newPassword !== confirmPassword) {
+                messageDiv.textContent = 'Password baru dan konfirmasi tidak sama';
+                messageDiv.className = 'status-message error';
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            // Validate password length
+            if (newPassword.length < 6) {
+                messageDiv.textContent = 'Password baru minimal 6 karakter';
+                messageDiv.className = 'status-message error';
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            messageDiv.textContent = 'Mengubah password...';
+            messageDiv.className = 'status-message success';
+            messageDiv.style.display = 'block';
+            
+            try {
+                console.log('Sending change password request to:', `${API_URL}/admin/change-password`);
+                console.log('Session ID:', sessionId);
+                
+                const response = await fetch(`${API_URL}/admin/change-password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-session-id': sessionId
+                    },
+                    body: JSON.stringify({ oldPassword, newPassword })
+                });
+                
+                console.log('Response status:', response.status);
+                
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    console.error('Response is not JSON:', contentType);
+                    const text = await response.text();
+                    console.error('Response body:', text);
+                    throw new Error('Server returned non-JSON response. Mungkin session expired, silakan login ulang.');
+                }
+                
+                const result = await response.json();
+                console.log('Result:', result);
+                
+                if (result.success) {
+                    messageDiv.textContent = result.message;
+                    messageDiv.className = 'status-message success';
+                    
+                    // Wait 2 seconds then redirect to login
+                    setTimeout(() => {
+                        localStorage.clear();
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    messageDiv.textContent = result.message;
+                    messageDiv.className = 'status-message error';
+                }
+            } catch (error) {
+                console.error('Error changing password:', error);
+                messageDiv.textContent = 'Error: ' + error.message;
+                messageDiv.className = 'status-message error';
+            }
+        });
+
+        // Load students on page load
+        loadStudents();
+        
+        // Load school logo (common.js already loaded above)
+        loadSchoolLogo('schoolLogoHeader');
+    </script>
+
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .admin-table th {
+            background: #f8f9fa;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .admin-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-right: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn-view {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #059669;
+        }
+
+        .btn-edit {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #2563eb;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #dc2626;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+    </style>
+</body>
+</html>

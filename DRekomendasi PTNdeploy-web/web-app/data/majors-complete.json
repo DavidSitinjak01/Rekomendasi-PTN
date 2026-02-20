@@ -1,0 +1,1288 @@
+[
+  {
+    "id": "kedokteran-ui",
+    "major": "Kedokteran",
+    "ptnId": "ui",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "65-70%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia dan farmakologi"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Radiologi dan fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Analisis data medis"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis internasional"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "teknik-informatika-itb",
+    "major": "Teknik Informatika",
+    "ptnId": "itb",
+    "faculty": "Sekolah Teknik Elektro dan Informatika",
+    "category": "Saintek",
+    "passingGrade": "60-65%",
+    "capacity": 120,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 35, "reason": "Algoritma dan logika"},
+      {"name": "Fisika", "minScore": 80, "weight": 25, "reason": "Elektronika dan sistem"},
+      {"name": "Informatika", "minScore": 85, "weight": 25, "reason": "Pemrograman dasar"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 15, "reason": "Dokumentasi teknis"}
+    ],
+    "description": "Program studi yang mempelajari komputasi, perangkat lunak, dan sistem informasi",
+    "careerProspects": ["Software Engineer", "Data Scientist", "System Analyst", "IT Consultant"]
+  },
+  {
+    "id": "teknik-sipil-itb",
+    "major": "Teknik Sipil",
+    "ptnId": "itb",
+    "faculty": "Fakultas Teknik Sipil dan Lingkungan",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 150,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan struktur"},
+      {"name": "Fisika", "minScore": 85, "weight": 35, "reason": "Mekanika dan material"},
+      {"name": "Kimia", "minScore": 70, "weight": 15, "reason": "Material konstruksi"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Standar internasional"}
+    ],
+    "description": "Program studi yang mempelajari perancangan, konstruksi, dan pemeliharaan infrastruktur",
+    "careerProspects": ["Civil Engineer", "Project Manager", "Konsultan Konstruksi", "Quantity Surveyor"]
+  },
+  {
+    "id": "akuntansi-ui",
+    "major": "Akuntansi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ekonomi dan Bisnis",
+    "category": "Soshum",
+    "passingGrade": "60-65%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan keuangan"},
+      {"name": "Ekonomi", "minScore": 85, "weight": 35, "reason": "Prinsip ekonomi bisnis"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Standar akuntansi internasional"},
+      {"name": "Bahasa Indonesia", "minScore": 70, "weight": 10, "reason": "Laporan keuangan"}
+    ],
+    "description": "Program studi yang mempelajari pencatatan, pelaporan, dan analisis keuangan",
+    "careerProspects": ["Akuntan Publik", "Auditor", "Tax Consultant", "Financial Analyst"]
+  },
+  {
+    "id": "hukum-ugm",
+    "major": "Ilmu Hukum",
+    "ptnId": "ugm",
+    "faculty": "Fakultas Hukum",
+    "category": "Soshum",
+    "passingGrade": "58-63%",
+    "capacity": 120,
+    "requiredSubjects": [
+      {"name": "Bahasa Indonesia", "minScore": 80, "weight": 30, "reason": "Pemahaman teks hukum"},
+      {"name": "Sejarah", "minScore": 75, "weight": 25, "reason": "Sejarah hukum Indonesia"},
+      {"name": "Sosiologi", "minScore": 75, "weight": 25, "reason": "Hukum dan masyarakat"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Hukum internasional"}
+    ],
+    "description": "Program studi yang mempelajari sistem hukum, perundang-undangan, dan praktik peradilan",
+    "careerProspects": ["Pengacara", "Hakim", "Notaris", "Legal Consultant", "Jaksa"]
+  },
+  {
+    "id": "psikologi-ui",
+    "major": "Psikologi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Psikologi",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 75, "weight": 30, "reason": "Psikologi biologis"},
+      {"name": "Sosiologi", "minScore": 80, "weight": 30, "reason": "Psikologi sosial"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Statistik psikologi"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Literatur psikologi"}
+    ],
+    "description": "Program studi yang mempelajari perilaku dan proses mental manusia",
+    "careerProspects": ["Psikolog Klinis", "HR Specialist", "Konselor", "Peneliti"]
+  },
+  {
+    "id": "arsitektur-itb",
+    "major": "Arsitektur",
+    "ptnId": "itb",
+    "faculty": "Sekolah Arsitektur, Perencanaan dan Pengembangan Kebijakan",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 30, "reason": "Perhitungan desain"},
+      {"name": "Fisika", "minScore": 75, "weight": 30, "reason": "Struktur bangunan"},
+      {"name": "Sejarah", "minScore": 70, "weight": 20, "reason": "Sejarah arsitektur"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 20, "reason": "Referensi internasional"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan desain bangunan",
+    "careerProspects": ["Arsitek", "Interior Designer", "Urban Planner", "Konsultan Desain"]
+  },
+  {
+    "id": "farmasi-itb",
+    "major": "Farmasi",
+    "ptnId": "itb",
+    "faculty": "Sekolah Farmasi",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 85, "weight": 40, "reason": "Kimia farmasi"},
+      {"name": "Biologi", "minScore": 80, "weight": 30, "reason": "Farmakologi"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 15, "reason": "Farmakokinetika"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur farmasi"}
+    ],
+    "description": "Program studi yang mempelajari obat-obatan dan penggunaannya",
+    "careerProspects": ["Apoteker", "Peneliti Farmasi", "Quality Control", "Regulatory Affairs"]
+  },
+  {
+    "id": "manajemen-ui",
+    "major": "Manajemen",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ekonomi dan Bisnis",
+    "category": "Soshum",
+    "passingGrade": "60-65%",
+    "capacity": 120,
+    "requiredSubjects": [
+      {"name": "Ekonomi", "minScore": 80, "weight": 35, "reason": "Prinsip manajemen"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 30, "reason": "Analisis bisnis"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Manajemen internasional"},
+      {"name": "Sosiologi", "minScore": 70, "weight": 15, "reason": "Manajemen SDM"}
+    ],
+    "description": "Program studi yang mempelajari pengelolaan organisasi dan bisnis",
+    "careerProspects": ["Manager", "Business Analyst", "Entrepreneur", "Consultant"]
+  },
+  {
+    "id": "teknik-elektro-itb",
+    "major": "Teknik Elektro",
+    "ptnId": "itb",
+    "faculty": "Sekolah Teknik Elektro dan Informatika",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 130,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 85, "weight": 40, "reason": "Elektronika dan listrik"},
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 35, "reason": "Analisis rangkaian"},
+      {"name": "Informatika", "minScore": 70, "weight": 15, "reason": "Sistem kontrol"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Dokumentasi teknis"}
+    ],
+    "description": "Program studi yang mempelajari sistem kelistrikan dan elektronika",
+    "careerProspects": ["Electrical Engineer", "Electronics Engineer", "Power System Engineer", "Automation Engineer"]
+  },
+  {
+    "id": "teknik-mesin-itb",
+    "major": "Teknik Mesin",
+    "ptnId": "itb",
+    "faculty": "Fakultas Teknik Mesin dan Dirgantara",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 140,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 85, "weight": 40, "reason": "Mekanika dan termodinamika"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan teknik"},
+      {"name": "Kimia", "minScore": 70, "weight": 15, "reason": "Material teknik"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Standar teknik"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan pembuatan mesin",
+    "careerProspects": ["Mechanical Engineer", "Manufacturing Engineer", "Maintenance Engineer", "Design Engineer"]
+  },
+  {
+    "id": "teknik-kimia-itb",
+    "major": "Teknik Kimia",
+    "ptnId": "itb",
+    "faculty": "Fakultas Teknologi Industri",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 85, "weight": 40, "reason": "Proses kimia industri"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 30, "reason": "Perhitungan proses"},
+      {"name": "Fisika", "minScore": 75, "weight": 20, "reason": "Termodinamika"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur teknik"}
+    ],
+    "description": "Program studi yang mempelajari proses transformasi bahan kimia",
+    "careerProspects": ["Process Engineer", "Production Engineer", "Quality Engineer", "R&D Engineer"]
+  },
+  {
+    "id": "ilmu-komunikasi-ui",
+    "major": "Ilmu Komunikasi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ilmu Sosial dan Ilmu Politik",
+    "category": "Soshum",
+    "passingGrade": "58-63%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Bahasa Indonesia", "minScore": 80, "weight": 35, "reason": "Komunikasi efektif"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 30, "reason": "Komunikasi global"},
+      {"name": "Sosiologi", "minScore": 75, "weight": 25, "reason": "Komunikasi massa"},
+      {"name": "Sejarah", "minScore": 65, "weight": 10, "reason": "Sejarah media"}
+    ],
+    "description": "Program studi yang mempelajari proses penyampaian pesan dan informasi",
+    "careerProspects": ["Jurnalis", "Public Relations", "Content Creator", "Marketing Communication"]
+  },
+  {
+    "id": "hubungan-internasional-ui",
+    "major": "Hubungan Internasional",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ilmu Sosial dan Ilmu Politik",
+    "category": "Soshum",
+    "passingGrade": "58-63%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Bahasa Inggris", "minScore": 85, "weight": 40, "reason": "Diplomasi internasional"},
+      {"name": "Sejarah", "minScore": 75, "weight": 25, "reason": "Sejarah hubungan internasional"},
+      {"name": "Geografi", "minScore": 70, "weight": 20, "reason": "Geopolitik"},
+      {"name": "Ekonomi", "minScore": 70, "weight": 15, "reason": "Ekonomi internasional"}
+    ],
+    "description": "Program studi yang mempelajari hubungan antar negara dan organisasi internasional",
+    "careerProspects": ["Diplomat", "International Relations Officer", "NGO Worker", "Policy Analyst"]
+  },
+  {
+    "id": "sastra-inggris-ui",
+    "major": "Sastra Inggris",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ilmu Pengetahuan Budaya",
+    "category": "Soshum",
+    "passingGrade": "55-60%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Bahasa Inggris", "minScore": 85, "weight": 50, "reason": "Kemampuan bahasa utama"},
+      {"name": "Bahasa Indonesia", "minScore": 75, "weight": 25, "reason": "Analisis sastra"},
+      {"name": "Sejarah", "minScore": 70, "weight": 15, "reason": "Sejarah sastra"},
+      {"name": "Sosiologi", "minScore": 65, "weight": 10, "reason": "Konteks sosial sastra"}
+    ],
+    "description": "Program studi yang mempelajari bahasa, sastra, dan budaya Inggris",
+    "careerProspects": ["Translator", "Editor", "Teacher", "Content Writer"]
+  },
+  {
+    "id": "matematika-itb",
+    "major": "Matematika",
+    "ptnId": "itb",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 90, "weight": 50, "reason": "Dasar matematika murni"},
+      {"name": "Fisika", "minScore": 75, "weight": 25, "reason": "Matematika terapan"},
+      {"name": "Informatika", "minScore": 70, "weight": 15, "reason": "Komputasi matematika"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur matematika"}
+    ],
+    "description": "Program studi yang mempelajari teori dan aplikasi matematika",
+    "careerProspects": ["Data Scientist", "Actuary", "Researcher", "Statistician"]
+  },
+  {
+    "id": "fisika-itb",
+    "major": "Fisika",
+    "ptnId": "itb",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 90, "weight": 45, "reason": "Dasar fisika murni"},
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 40, "reason": "Fisika matematis"},
+      {"name": "Kimia", "minScore": 70, "weight": 10, "reason": "Fisika kimia"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 5, "reason": "Literatur fisika"}
+    ],
+    "description": "Program studi yang mempelajari fenomena alam dan hukum-hukumnya",
+    "careerProspects": ["Physicist", "Researcher", "Engineer", "Data Analyst"]
+  },
+  {
+    "id": "kimia-itb",
+    "major": "Kimia",
+    "ptnId": "itb",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 75,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 90, "weight": 45, "reason": "Dasar kimia murni"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 25, "reason": "Kimia komputasi"},
+      {"name": "Fisika", "minScore": 75, "weight": 20, "reason": "Kimia fisik"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur kimia"}
+    ],
+    "description": "Program studi yang mempelajari struktur, sifat, dan reaksi zat",
+    "careerProspects": ["Chemist", "Quality Control", "R&D Scientist", "Lab Analyst"]
+  },
+  {
+    "id": "biologi-ui",
+    "major": "Biologi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 90, "weight": 45, "reason": "Dasar biologi"},
+      {"name": "Kimia", "minScore": 80, "weight": 30, "reason": "Biokimia"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 15, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur biologi"}
+    ],
+    "description": "Program studi yang mempelajari kehidupan dan organisme hidup",
+    "careerProspects": ["Biologist", "Researcher", "Conservationist", "Lab Technician"]
+  },
+  {
+    "id": "geologi-itb",
+    "major": "Teknik Geologi",
+    "ptnId": "itb",
+    "faculty": "Fakultas Ilmu dan Teknologi Kebumian",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 80, "weight": 35, "reason": "Geofisika"},
+      {"name": "Kimia", "minScore": 80, "weight": 30, "reason": "Geokimia"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 20, "reason": "Analisis data geologi"},
+      {"name": "Geografi", "minScore": 75, "weight": 15, "reason": "Geologi regional"}
+    ],
+    "description": "Program studi yang mempelajari struktur dan komposisi bumi",
+    "careerProspects": ["Geologist", "Mining Engineer", "Oil & Gas Engineer", "Environmental Consultant"]
+  },
+  {
+    "id": "teknik-industri-itb",
+    "major": "Teknik Industri",
+    "ptnId": "itb",
+    "faculty": "Fakultas Teknologi Industri",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 130,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Optimasi sistem"},
+      {"name": "Fisika", "minScore": 75, "weight": 25, "reason": "Sistem produksi"},
+      {"name": "Ekonomi", "minScore": 70, "weight": 20, "reason": "Manajemen industri"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 20, "reason": "Standar industri"}
+    ],
+    "description": "Program studi yang mempelajari optimasi sistem produksi dan operasi",
+    "careerProspects": ["Industrial Engineer", "Operations Manager", "Supply Chain Manager", "Quality Engineer"]
+  },
+  {
+    "id": "kedokteran-gigi-ui",
+    "major": "Kedokteran Gigi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Kedokteran Gigi",
+    "category": "Saintek",
+    "passingGrade": "63-68%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 35, "reason": "Anatomi oral"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Material kedokteran gigi"},
+      {"name": "Fisika", "minScore": 75, "weight": 20, "reason": "Radiologi dental"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 15, "reason": "Literatur kedokteran gigi"}
+    ],
+    "description": "Program studi yang mempelajari kesehatan gigi dan mulut",
+    "careerProspects": ["Dokter Gigi", "Orthodontist", "Periodontist", "Oral Surgeon"]
+  },
+  {
+    "id": "keperawatan-ui",
+    "major": "Ilmu Keperawatan",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ilmu Keperawatan",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Anatomi dan fisiologi"},
+      {"name": "Kimia", "minScore": 75, "weight": 25, "reason": "Farmakologi"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Dosis obat"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur keperawatan"}
+    ],
+    "description": "Program studi yang mempelajari perawatan pasien dan kesehatan",
+    "careerProspects": ["Perawat", "Nurse Practitioner", "Clinical Nurse", "Nurse Educator"]
+  },
+  {
+    "id": "kesehatan-masyarakat-ui",
+    "major": "Kesehatan Masyarakat",
+    "ptnId": "ui",
+    "faculty": "Fakultas Kesehatan Masyarakat",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 75, "weight": 30, "reason": "Epidemiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 30, "reason": "Biostatistik"},
+      {"name": "Sosiologi", "minScore": 70, "weight": 25, "reason": "Kesehatan sosial"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur kesehatan"}
+    ],
+    "description": "Program studi yang mempelajari kesehatan populasi dan pencegahan penyakit",
+    "careerProspects": ["Public Health Officer", "Epidemiologist", "Health Educator", "Health Policy Analyst"]
+  },
+  {
+    "id": "gizi-ui",
+    "major": "Ilmu Gizi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Kesehatan Masyarakat",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 35, "reason": "Metabolisme nutrisi"},
+      {"name": "Kimia", "minScore": 80, "weight": 35, "reason": "Biokimia gizi"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Perhitungan gizi"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur gizi"}
+    ],
+    "description": "Program studi yang mempelajari nutrisi dan kesehatan",
+    "careerProspects": ["Nutritionist", "Dietitian", "Food Technologist", "Nutrition Consultant"]
+  },
+  {
+    "id": "agroteknologi-ipb",
+    "major": "Agroteknologi",
+    "ptnId": "ipb",
+    "faculty": "Fakultas Pertanian",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 120,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Ilmu tanaman"},
+      {"name": "Kimia", "minScore": 75, "weight": 30, "reason": "Kimia tanah"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Analisis pertanian"},
+      {"name": "Geografi", "minScore": 70, "weight": 10, "reason": "Agroklimat"}
+    ],
+    "description": "Program studi yang mempelajari budidaya tanaman dan teknologi pertanian",
+    "careerProspects": ["Agronomist", "Farm Manager", "Agricultural Consultant", "Researcher"]
+  },
+  {
+    "id": "peternakan-ipb",
+    "major": "Peternakan",
+    "ptnId": "ipb",
+    "faculty": "Fakultas Peternakan",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Ilmu hewan"},
+      {"name": "Kimia", "minScore": 75, "weight": 30, "reason": "Nutrisi ternak"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Manajemen ternak"},
+      {"name": "Ekonomi", "minScore": 65, "weight": 10, "reason": "Ekonomi peternakan"}
+    ],
+    "description": "Program studi yang mempelajari budidaya dan manajemen ternak",
+    "careerProspects": ["Livestock Manager", "Animal Nutritionist", "Veterinary Assistant", "Farm Consultant"]
+  },
+  {
+    "id": "kehutanan-ipb",
+    "major": "Kehutanan",
+    "ptnId": "ipb",
+    "faculty": "Fakultas Kehutanan",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Ekologi hutan"},
+      {"name": "Geografi", "minScore": 75, "weight": 25, "reason": "Geografi hutan"},
+      {"name": "Kimia", "minScore": 70, "weight": 20, "reason": "Kimia kayu"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 15, "reason": "Inventarisasi hutan"}
+    ],
+    "description": "Program studi yang mempelajari pengelolaan hutan dan konservasi",
+    "careerProspects": ["Forester", "Conservation Officer", "Forest Manager", "Environmental Consultant"]
+  },
+  {
+    "id": "teknologi-pangan-ipb",
+    "major": "Teknologi Pangan",
+    "ptnId": "ipb",
+    "faculty": "Fakultas Teknologi Pertanian",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 85, "weight": 40, "reason": "Kimia pangan"},
+      {"name": "Biologi", "minScore": 80, "weight": 30, "reason": "Mikrobiologi pangan"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Proses pangan"},
+      {"name": "Fisika", "minScore": 70, "weight": 10, "reason": "Teknologi pengolahan"}
+    ],
+    "description": "Program studi yang mempelajari pengolahan dan keamanan pangan",
+    "careerProspects": ["Food Technologist", "Quality Assurance", "Product Development", "Food Safety Officer"]
+  },
+  {
+    "id": "ilmu-komputer-ui",
+    "major": "Ilmu Komputer",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ilmu Komputer",
+    "category": "Saintek",
+    "passingGrade": "60-65%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 40, "reason": "Algoritma dan logika"},
+      {"name": "Informatika", "minScore": 85, "weight": 35, "reason": "Pemrograman"},
+      {"name": "Fisika", "minScore": 75, "weight": 15, "reason": "Sistem komputer"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Dokumentasi"}
+    ],
+    "description": "Program studi yang mempelajari teori komputasi dan aplikasinya",
+    "careerProspects": ["Software Developer", "Data Scientist", "AI Engineer", "System Architect"]
+  },
+  {
+    "id": "sistem-informasi-ui",
+    "major": "Sistem Informasi",
+    "ptnId": "ui",
+    "faculty": "Fakultas Ilmu Komputer",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Analisis sistem"},
+      {"name": "Informatika", "minScore": 80, "weight": 30, "reason": "Pemrograman sistem"},
+      {"name": "Ekonomi", "minScore": 70, "weight": 20, "reason": "Sistem bisnis"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 15, "reason": "Dokumentasi sistem"}
+    ],
+    "description": "Program studi yang mempelajari pengelolaan informasi dalam organisasi",
+    "careerProspects": ["Business Analyst", "System Analyst", "IT Consultant", "Database Administrator"]
+  },
+  {
+    "id": "teknik-perkapalan-its",
+    "major": "Teknik Perkapalan",
+    "ptnId": "its",
+    "faculty": "Fakultas Teknologi Kelautan",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 80, "weight": 35, "reason": "Hidrodinamika"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan kapal"},
+      {"name": "Kimia", "minScore": 70, "weight": 20, "reason": "Material kapal"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Standar maritim"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan konstruksi kapal",
+    "careerProspects": ["Naval Architect", "Ship Designer", "Marine Engineer", "Shipyard Manager"]
+  },
+  {
+    "id": "teknik-kelautan-its",
+    "major": "Teknik Kelautan",
+    "ptnId": "its",
+    "faculty": "Fakultas Teknologi Kelautan",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 80, "weight": 35, "reason": "Oseanografi fisik"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 30, "reason": "Analisis kelautan"},
+      {"name": "Geografi", "minScore": 75, "weight": 20, "reason": "Geografi kelautan"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur kelautan"}
+    ],
+    "description": "Program studi yang mempelajari eksplorasi dan eksploitasi sumber daya laut",
+    "careerProspects": ["Ocean Engineer", "Offshore Engineer", "Marine Consultant", "Coastal Engineer"]
+  },
+  {
+    "id": "desain-produk-its",
+    "major": "Desain Produk Industri",
+    "ptnId": "its",
+    "faculty": "Fakultas Desain Kreatif dan Bisnis Digital",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 30, "reason": "Perhitungan desain"},
+      {"name": "Fisika", "minScore": 70, "weight": 25, "reason": "Ergonomi produk"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 25, "reason": "Tren desain global"},
+      {"name": "Ekonomi", "minScore": 65, "weight": 20, "reason": "Desain komersial"}
+    ],
+    "description": "Program studi yang mempelajari perancangan produk industri",
+    "careerProspects": ["Product Designer", "Industrial Designer", "UX Designer", "Design Consultant"]
+  },
+  {
+    "id": "statistika-its",
+    "major": "Statistika",
+    "ptnId": "its",
+    "faculty": "Fakultas Sains dan Analitika Data",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 50, "reason": "Teori statistika"},
+      {"name": "Informatika", "minScore": 75, "weight": 25, "reason": "Komputasi statistik"},
+      {"name": "Ekonomi", "minScore": 70, "weight": 15, "reason": "Statistika ekonomi"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur statistika"}
+    ],
+    "description": "Program studi yang mempelajari pengumpulan, analisis, dan interpretasi data",
+    "careerProspects": ["Data Analyst", "Statistician", "Actuary", "Market Researcher"]
+  },
+  {
+    "id": "kedokteran-unair",
+    "major": "Kedokteran",
+    "ptnId": "unair",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "65-70%",
+    "capacity": 120,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia medis"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "kedokteran-hewan-unair",
+    "major": "Kedokteran Hewan",
+    "ptnId": "unair",
+    "faculty": "Fakultas Kedokteran Hewan",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 40, "reason": "Anatomi hewan"},
+      {"name": "Kimia", "minScore": 80, "weight": 30, "reason": "Farmakologi veteriner"},
+      {"name": "Fisika", "minScore": 70, "weight": 15, "reason": "Radiologi veteriner"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur veteriner"}
+    ],
+    "description": "Program studi yang mempelajari kesehatan dan penyakit hewan",
+    "careerProspects": ["Dokter Hewan", "Veterinary Consultant", "Animal Health Officer", "Researcher"]
+  },
+  {
+    "id": "akuntansi-unair",
+    "major": "Akuntansi",
+    "ptnId": "unair",
+    "faculty": "Fakultas Ekonomi dan Bisnis",
+    "category": "Soshum",
+    "passingGrade": "58-63%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan keuangan"},
+      {"name": "Ekonomi", "minScore": 85, "weight": 35, "reason": "Prinsip akuntansi"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Standar akuntansi internasional"},
+      {"name": "Bahasa Indonesia", "minScore": 70, "weight": 10, "reason": "Laporan keuangan"}
+    ],
+    "description": "Program studi yang mempelajari pencatatan dan pelaporan keuangan",
+    "careerProspects": ["Akuntan", "Auditor", "Tax Consultant", "Financial Analyst"]
+  },
+  {
+    "id": "teknik-sipil-undip",
+    "major": "Teknik Sipil",
+    "ptnId": "undip",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 130,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan struktur"},
+      {"name": "Fisika", "minScore": 85, "weight": 35, "reason": "Mekanika struktur"},
+      {"name": "Kimia", "minScore": 70, "weight": 15, "reason": "Material konstruksi"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Standar konstruksi"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan konstruksi infrastruktur",
+    "careerProspects": ["Civil Engineer", "Structural Engineer", "Project Manager", "Construction Manager"]
+  },
+  {
+    "id": "teknik-mesin-undip",
+    "major": "Teknik Mesin",
+    "ptnId": "undip",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 120,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 85, "weight": 40, "reason": "Mekanika dan termodinamika"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan teknik"},
+      {"name": "Kimia", "minScore": 70, "weight": 15, "reason": "Material teknik"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Standar teknik"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan pembuatan mesin",
+    "careerProspects": ["Mechanical Engineer", "Manufacturing Engineer", "Maintenance Engineer", "Design Engineer"]
+  },
+  {
+    "id": "teknik-elektro-undip",
+    "major": "Teknik Elektro",
+    "ptnId": "undip",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 85, "weight": 40, "reason": "Elektronika"},
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 35, "reason": "Analisis rangkaian"},
+      {"name": "Informatika", "minScore": 70, "weight": 15, "reason": "Sistem kontrol"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Dokumentasi teknis"}
+    ],
+    "description": "Program studi yang mempelajari sistem kelistrikan dan elektronika",
+    "careerProspects": ["Electrical Engineer", "Electronics Engineer", "Power Engineer", "Automation Engineer"]
+  },
+  {
+    "id": "kedokteran-unpad",
+    "major": "Kedokteran",
+    "ptnId": "unpad",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "65-70%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "farmasi-unpad",
+    "major": "Farmasi",
+    "ptnId": "unpad",
+    "faculty": "Fakultas Farmasi",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 85, "weight": 40, "reason": "Kimia farmasi"},
+      {"name": "Biologi", "minScore": 80, "weight": 30, "reason": "Farmakologi"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 15, "reason": "Farmakokinetika"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur farmasi"}
+    ],
+    "description": "Program studi yang mempelajari obat-obatan dan penggunaannya",
+    "careerProspects": ["Apoteker", "Peneliti Farmasi", "Quality Control", "Regulatory Affairs"]
+  },
+  {
+    "id": "psikologi-unpad",
+    "major": "Psikologi",
+    "ptnId": "unpad",
+    "faculty": "Fakultas Psikologi",
+    "category": "Saintek",
+    "passingGrade": "58-63%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 75, "weight": 30, "reason": "Psikologi biologis"},
+      {"name": "Sosiologi", "minScore": 80, "weight": 30, "reason": "Psikologi sosial"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Statistik psikologi"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Literatur psikologi"}
+    ],
+    "description": "Program studi yang mempelajari perilaku dan proses mental manusia",
+    "careerProspects": ["Psikolog", "HR Specialist", "Konselor", "Peneliti"]
+  },
+  {
+    "id": "kedokteran-ub",
+    "major": "Kedokteran",
+    "ptnId": "ub",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "63-68%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "hukum-ub",
+    "major": "Ilmu Hukum",
+    "ptnId": "ub",
+    "faculty": "Fakultas Hukum",
+    "category": "Soshum",
+    "passingGrade": "55-60%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Bahasa Indonesia", "minScore": 80, "weight": 30, "reason": "Pemahaman teks hukum"},
+      {"name": "Sejarah", "minScore": 75, "weight": 25, "reason": "Sejarah hukum"},
+      {"name": "Sosiologi", "minScore": 75, "weight": 25, "reason": "Hukum dan masyarakat"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Hukum internasional"}
+    ],
+    "description": "Program studi yang mempelajari sistem hukum dan perundang-undangan",
+    "careerProspects": ["Pengacara", "Hakim", "Notaris", "Legal Consultant"]
+  },
+  {
+    "id": "ekonomi-pembangunan-ub",
+    "major": "Ekonomi Pembangunan",
+    "ptnId": "ub",
+    "faculty": "Fakultas Ekonomi dan Bisnis",
+    "category": "Soshum",
+    "passingGrade": "55-60%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Ekonomi", "minScore": 85, "weight": 40, "reason": "Teori ekonomi"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 30, "reason": "Ekonometrika"},
+      {"name": "Geografi", "minScore": 70, "weight": 15, "reason": "Ekonomi regional"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Ekonomi internasional"}
+    ],
+    "description": "Program studi yang mempelajari pembangunan ekonomi dan kebijakan",
+    "careerProspects": ["Economist", "Policy Analyst", "Development Consultant", "Researcher"]
+  },
+  {
+    "id": "agroteknologi-ub",
+    "major": "Agroteknologi",
+    "ptnId": "ub",
+    "faculty": "Fakultas Pertanian",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Ilmu tanaman"},
+      {"name": "Kimia", "minScore": 75, "weight": 30, "reason": "Kimia tanah"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 20, "reason": "Analisis pertanian"},
+      {"name": "Geografi", "minScore": 70, "weight": 10, "reason": "Agroklimat"}
+    ],
+    "description": "Program studi yang mempelajari budidaya tanaman dan teknologi pertanian",
+    "careerProspects": ["Agronomist", "Farm Manager", "Agricultural Consultant", "Researcher"]
+  },
+  {
+    "id": "kedokteran-uns",
+    "major": "Kedokteran",
+    "ptnId": "uns",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "63-68%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "teknik-informatika-uns",
+    "major": "Teknik Informatika",
+    "ptnId": "uns",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 35, "reason": "Algoritma"},
+      {"name": "Fisika", "minScore": 75, "weight": 25, "reason": "Sistem komputer"},
+      {"name": "Informatika", "minScore": 85, "weight": 25, "reason": "Pemrograman"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 15, "reason": "Dokumentasi"}
+    ],
+    "description": "Program studi yang mempelajari komputasi dan perangkat lunak",
+    "careerProspects": ["Software Engineer", "Data Scientist", "System Analyst", "IT Consultant"]
+  },
+  {
+    "id": "pendidikan-matematika-uny",
+    "major": "Pendidikan Matematika",
+    "ptnId": "uny",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 85, "weight": 50, "reason": "Materi pengajaran"},
+      {"name": "Bahasa Indonesia", "minScore": 75, "weight": 20, "reason": "Komunikasi pengajaran"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur pendidikan"},
+      {"name": "Sosiologi", "minScore": 70, "weight": 15, "reason": "Psikologi pendidikan"}
+    ],
+    "description": "Program studi yang mempelajari pendidikan dan pengajaran matematika",
+    "careerProspects": ["Guru Matematika", "Dosen", "Tutor", "Curriculum Developer"]
+  },
+  {
+    "id": "pendidikan-bahasa-inggris-uny",
+    "major": "Pendidikan Bahasa Inggris",
+    "ptnId": "uny",
+    "faculty": "Fakultas Bahasa dan Seni",
+    "category": "Soshum",
+    "passingGrade": "53-58%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Bahasa Inggris", "minScore": 85, "weight": 50, "reason": "Kemampuan bahasa"},
+      {"name": "Bahasa Indonesia", "minScore": 75, "weight": 25, "reason": "Pedagogi"},
+      {"name": "Sosiologi", "minScore": 70, "weight": 15, "reason": "Psikologi pendidikan"},
+      {"name": "Sejarah", "minScore": 65, "weight": 10, "reason": "Budaya bahasa"}
+    ],
+    "description": "Program studi yang mempelajari pendidikan dan pengajaran bahasa Inggris",
+    "careerProspects": ["Guru Bahasa Inggris", "Translator", "Interpreter", "Curriculum Developer"]
+  },
+  {
+    "id": "pendidikan-fisika-uny",
+    "major": "Pendidikan Fisika",
+    "ptnId": "uny",
+    "faculty": "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 85, "weight": 45, "reason": "Materi pengajaran"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 30, "reason": "Fisika matematis"},
+      {"name": "Bahasa Indonesia", "minScore": 70, "weight": 15, "reason": "Komunikasi pengajaran"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur pendidikan"}
+    ],
+    "description": "Program studi yang mempelajari pendidikan dan pengajaran fisika",
+    "careerProspects": ["Guru Fisika", "Dosen", "Tutor", "Lab Instructor"]
+  },
+  {
+    "id": "kedokteran-usu",
+    "major": "Kedokteran",
+    "ptnId": "usu",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "63-68%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "teknik-sipil-usu",
+    "major": "Teknik Sipil",
+    "ptnId": "usu",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan struktur"},
+      {"name": "Fisika", "minScore": 85, "weight": 35, "reason": "Mekanika"},
+      {"name": "Kimia", "minScore": 70, "weight": 15, "reason": "Material"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Standar"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan konstruksi infrastruktur",
+    "careerProspects": ["Civil Engineer", "Structural Engineer", "Project Manager", "Construction Manager"]
+  },
+  {
+    "id": "akuntansi-usu",
+    "major": "Akuntansi",
+    "ptnId": "usu",
+    "faculty": "Fakultas Ekonomi dan Bisnis",
+    "category": "Soshum",
+    "passingGrade": "55-60%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan keuangan"},
+      {"name": "Ekonomi", "minScore": 85, "weight": 35, "reason": "Prinsip akuntansi"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Standar internasional"},
+      {"name": "Bahasa Indonesia", "minScore": 70, "weight": 10, "reason": "Laporan"}
+    ],
+    "description": "Program studi yang mempelajari pencatatan dan pelaporan keuangan",
+    "careerProspects": ["Akuntan", "Auditor", "Tax Consultant", "Financial Analyst"]
+  },
+  {
+    "id": "kedokteran-unand",
+    "major": "Kedokteran",
+    "ptnId": "unand",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "63-68%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "farmasi-unand",
+    "major": "Farmasi",
+    "ptnId": "unand",
+    "faculty": "Fakultas Farmasi",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 85, "weight": 40, "reason": "Kimia farmasi"},
+      {"name": "Biologi", "minScore": 80, "weight": 30, "reason": "Farmakologi"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 15, "reason": "Farmakokinetika"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Literatur"}
+    ],
+    "description": "Program studi yang mempelajari obat-obatan dan penggunaannya",
+    "careerProspects": ["Apoteker", "Peneliti Farmasi", "Quality Control", "Regulatory Affairs"]
+  },
+  {
+    "id": "teknik-pertambangan-unand",
+    "major": "Teknik Pertambangan",
+    "ptnId": "unand",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 80, "weight": 35, "reason": "Geofisika"},
+      {"name": "Kimia", "minScore": 80, "weight": 30, "reason": "Geokimia"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 20, "reason": "Analisis tambang"},
+      {"name": "Geografi", "minScore": 70, "weight": 15, "reason": "Geologi"}
+    ],
+    "description": "Program studi yang mempelajari eksplorasi dan eksploitasi mineral",
+    "careerProspects": ["Mining Engineer", "Geologist", "Mine Planner", "Safety Engineer"]
+  },
+  {
+    "id": "kedokteran-unsri",
+    "major": "Kedokteran",
+    "ptnId": "unsri",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "60-65%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "teknik-kimia-unsri",
+    "major": "Teknik Kimia",
+    "ptnId": "unsri",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 85, "weight": 40, "reason": "Proses kimia"},
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 30, "reason": "Perhitungan proses"},
+      {"name": "Fisika", "minScore": 75, "weight": 20, "reason": "Termodinamika"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 10, "reason": "Literatur"}
+    ],
+    "description": "Program studi yang mempelajari proses transformasi bahan kimia",
+    "careerProspects": ["Process Engineer", "Production Engineer", "Quality Engineer", "R&D Engineer"]
+  },
+  {
+    "id": "kedokteran-unhas",
+    "major": "Kedokteran",
+    "ptnId": "unhas",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "63-68%",
+    "capacity": 100,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "teknik-sipil-unhas",
+    "major": "Teknik Sipil",
+    "ptnId": "unhas",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 110,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan struktur"},
+      {"name": "Fisika", "minScore": 85, "weight": 35, "reason": "Mekanika"},
+      {"name": "Kimia", "minScore": 70, "weight": 15, "reason": "Material"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 15, "reason": "Standar"}
+    ],
+    "description": "Program studi yang mempelajari perancangan dan konstruksi infrastruktur",
+    "careerProspects": ["Civil Engineer", "Structural Engineer", "Project Manager", "Construction Manager"]
+  },
+  {
+    "id": "akuntansi-unhas",
+    "major": "Akuntansi",
+    "ptnId": "unhas",
+    "faculty": "Fakultas Ekonomi dan Bisnis",
+    "category": "Soshum",
+    "passingGrade": "55-60%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Matematika (Umum)", "minScore": 80, "weight": 35, "reason": "Perhitungan keuangan"},
+      {"name": "Ekonomi", "minScore": 85, "weight": 35, "reason": "Prinsip akuntansi"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 20, "reason": "Standar internasional"},
+      {"name": "Bahasa Indonesia", "minScore": 70, "weight": 10, "reason": "Laporan"}
+    ],
+    "description": "Program studi yang mempelajari pencatatan dan pelaporan keuangan",
+    "careerProspects": ["Akuntan", "Auditor", "Tax Consultant", "Financial Analyst"]
+  },
+  {
+    "id": "ilmu-kelautan-unhas",
+    "major": "Ilmu Kelautan",
+    "ptnId": "unhas",
+    "faculty": "Fakultas Ilmu Kelautan dan Perikanan",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Biologi laut"},
+      {"name": "Kimia", "minScore": 75, "weight": 25, "reason": "Kimia laut"},
+      {"name": "Fisika", "minScore": 70, "weight": 20, "reason": "Oseanografi fisik"},
+      {"name": "Geografi", "minScore": 70, "weight": 15, "reason": "Geografi kelautan"}
+    ],
+    "description": "Program studi yang mempelajari ekosistem dan sumber daya laut",
+    "careerProspects": ["Marine Biologist", "Oceanographer", "Marine Consultant", "Researcher"]
+  },
+  {
+    "id": "perikanan-unhas",
+    "major": "Perikanan",
+    "ptnId": "unhas",
+    "faculty": "Fakultas Ilmu Kelautan dan Perikanan",
+    "category": "Saintek",
+    "passingGrade": "50-55%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 45, "reason": "Biologi ikan"},
+      {"name": "Kimia", "minScore": 70, "weight": 25, "reason": "Kualitas air"},
+      {"name": "Matematika (Umum)", "minScore": 65, "weight": 20, "reason": "Manajemen perikanan"},
+      {"name": "Geografi", "minScore": 65, "weight": 10, "reason": "Geografi perikanan"}
+    ],
+    "description": "Program studi yang mempelajari budidaya dan pengelolaan ikan",
+    "careerProspects": ["Fisheries Manager", "Aquaculture Specialist", "Fish Health Officer", "Researcher"]
+  },
+  {
+    "id": "kedokteran-unmul",
+    "major": "Kedokteran",
+    "ptnId": "unmul",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "60-65%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "kehutanan-unmul",
+    "major": "Kehutanan",
+    "ptnId": "unmul",
+    "faculty": "Fakultas Kehutanan",
+    "category": "Saintek",
+    "passingGrade": "50-55%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 80, "weight": 40, "reason": "Ekologi hutan"},
+      {"name": "Geografi", "minScore": 75, "weight": 25, "reason": "Geografi hutan"},
+      {"name": "Kimia", "minScore": 70, "weight": 20, "reason": "Kimia kayu"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 15, "reason": "Inventarisasi"}
+    ],
+    "description": "Program studi yang mempelajari pengelolaan hutan dan konservasi",
+    "careerProspects": ["Forester", "Conservation Officer", "Forest Manager", "Environmental Consultant"]
+  },
+  {
+    "id": "teknik-pertambangan-unmul",
+    "major": "Teknik Pertambangan",
+    "ptnId": "unmul",
+    "faculty": "Fakultas Teknik",
+    "category": "Saintek",
+    "passingGrade": "53-58%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Fisika", "minScore": 80, "weight": 35, "reason": "Geofisika"},
+      {"name": "Kimia", "minScore": 80, "weight": 30, "reason": "Geokimia"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 20, "reason": "Analisis tambang"},
+      {"name": "Geografi", "minScore": 70, "weight": 15, "reason": "Geologi"}
+    ],
+    "description": "Program studi yang mempelajari eksplorasi dan eksploitasi mineral",
+    "careerProspects": ["Mining Engineer", "Geologist", "Mine Planner", "Safety Engineer"]
+  },
+  {
+    "id": "kedokteran-unud",
+    "major": "Kedokteran",
+    "ptnId": "unud",
+    "faculty": "Fakultas Kedokteran",
+    "category": "Saintek",
+    "passingGrade": "60-65%",
+    "capacity": 90,
+    "requiredSubjects": [
+      {"name": "Biologi", "minScore": 85, "weight": 30, "reason": "Dasar ilmu kedokteran"},
+      {"name": "Kimia", "minScore": 85, "weight": 30, "reason": "Biokimia"},
+      {"name": "Fisika", "minScore": 80, "weight": 20, "reason": "Fisiologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 10, "reason": "Biostatistik"},
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 10, "reason": "Literatur medis"}
+    ],
+    "description": "Program studi yang mempelajari ilmu kesehatan dan penyakit manusia",
+    "careerProspects": ["Dokter Umum", "Dokter Spesialis", "Peneliti Medis", "Dosen"]
+  },
+  {
+    "id": "pariwisata-unud",
+    "major": "Pariwisata",
+    "ptnId": "unud",
+    "faculty": "Fakultas Pariwisata",
+    "category": "Soshum",
+    "passingGrade": "50-55%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Bahasa Inggris", "minScore": 80, "weight": 40, "reason": "Komunikasi wisatawan"},
+      {"name": "Geografi", "minScore": 75, "weight": 25, "reason": "Destinasi wisata"},
+      {"name": "Ekonomi", "minScore": 70, "weight": 20, "reason": "Ekonomi pariwisata"},
+      {"name": "Bahasa Indonesia", "minScore": 70, "weight": 15, "reason": "Komunikasi"}
+    ],
+    "description": "Program studi yang mempelajari industri dan manajemen pariwisata",
+    "careerProspects": ["Tourism Manager", "Tour Guide", "Hotel Manager", "Event Organizer"]
+  },
+  {
+    "id": "seni-rupa-itb",
+    "major": "Seni Rupa",
+    "ptnId": "itb",
+    "faculty": "Fakultas Seni Rupa dan Desain",
+    "category": "Soshum",
+    "passingGrade": "50-55%",
+    "capacity": 60,
+    "requiredSubjects": [
+      {"name": "Bahasa Indonesia", "minScore": 75, "weight": 30, "reason": "Konsep seni"},
+      {"name": "Sejarah", "minScore": 70, "weight": 25, "reason": "Sejarah seni"},
+      {"name": "Bahasa Inggris", "minScore": 70, "weight": 25, "reason": "Seni kontemporer"},
+      {"name": "Matematika (Umum)", "minScore": 65, "weight": 20, "reason": "Proporsi dan komposisi"}
+    ],
+    "description": "Program studi yang mempelajari seni visual dan ekspresi kreatif",
+    "careerProspects": ["Artist", "Illustrator", "Art Director", "Curator"]
+  },
+  {
+    "id": "desain-komunikasi-visual-itb",
+    "major": "Desain Komunikasi Visual",
+    "ptnId": "itb",
+    "faculty": "Fakultas Seni Rupa dan Desain",
+    "category": "Soshum",
+    "passingGrade": "53-58%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Bahasa Inggris", "minScore": 75, "weight": 30, "reason": "Tren desain global"},
+      {"name": "Bahasa Indonesia", "minScore": 75, "weight": 25, "reason": "Komunikasi visual"},
+      {"name": "Matematika (Umum)", "minScore": 70, "weight": 25, "reason": "Komposisi desain"},
+      {"name": "Informatika", "minScore": 70, "weight": 20, "reason": "Desain digital"}
+    ],
+    "description": "Program studi yang mempelajari desain grafis dan komunikasi visual",
+    "careerProspects": ["Graphic Designer", "UI/UX Designer", "Brand Designer", "Creative Director"]
+  },
+  {
+    "id": "planologi-itb",
+    "major": "Perencanaan Wilayah dan Kota",
+    "ptnId": "itb",
+    "faculty": "Sekolah Arsitektur, Perencanaan dan Pengembangan Kebijakan",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 70,
+    "requiredSubjects": [
+      {"name": "Geografi", "minScore": 80, "weight": 35, "reason": "Geografi perkotaan"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 25, "reason": "Analisis spasial"},
+      {"name": "Sosiologi", "minScore": 75, "weight": 20, "reason": "Sosiologi perkotaan"},
+      {"name": "Ekonomi", "minScore": 70, "weight": 20, "reason": "Ekonomi wilayah"}
+    ],
+    "description": "Program studi yang mempelajari perencanaan tata ruang dan pembangunan kota",
+    "careerProspects": ["Urban Planner", "Regional Planner", "Policy Analyst", "Development Consultant"]
+  },
+  {
+    "id": "teknik-lingkungan-itb",
+    "major": "Teknik Lingkungan",
+    "ptnId": "itb",
+    "faculty": "Fakultas Teknik Sipil dan Lingkungan",
+    "category": "Saintek",
+    "passingGrade": "55-60%",
+    "capacity": 80,
+    "requiredSubjects": [
+      {"name": "Kimia", "minScore": 80, "weight": 35, "reason": "Kimia lingkungan"},
+      {"name": "Biologi", "minScore": 75, "weight": 25, "reason": "Ekologi"},
+      {"name": "Matematika (Umum)", "minScore": 75, "weight": 20, "reason": "Analisis lingkungan"},
+      {"name": "Fisika", "minScore": 70, "weight": 20, "reason": "Proses lingkungan"}
+    ],
+    "description": "Program studi yang mempelajari pengelolaan dan perlindungan lingkungan",
+    "careerProspects": ["Environmental Engineer", "Waste Management Specialist", "Environmental Consultant", "Sustainability Officer"]
+  }
+]

@@ -1,0 +1,299 @@
+[
+  {
+    "id": 1,
+    "name": "Universitas Syiah Kuala",
+    "acronym": "USK",
+    "location": "Banda Aceh, Aceh",
+    "region": "Sumatera",
+    "established": 1961,
+    "accreditation": "A"
+  },
+  {
+    "id": 2,
+    "name": "Universitas Sumatera Utara",
+    "acronym": "USU",
+    "location": "Medan, Sumatera Utara",
+    "region": "Sumatera",
+    "established": 1952,
+    "accreditation": "A"
+  },
+  {
+    "id": 3,
+    "name": "Universitas Andalas",
+    "acronym": "Unand",
+    "location": "Padang, Sumatera Barat",
+    "region": "Sumatera",
+    "established": 1955,
+    "accreditation": "A"
+  },
+  {
+    "id": 4,
+    "name": "Universitas Riau",
+    "acronym": "Unri",
+    "location": "Pekanbaru, Riau",
+    "region": "Sumatera",
+    "established": 1962,
+    "accreditation": "A"
+  },
+  {
+    "id": 5,
+    "name": "Universitas Sriwijaya",
+    "acronym": "Unsri",
+    "location": "Palembang, Sumatera Selatan",
+    "region": "Sumatera",
+    "established": 1960,
+    "accreditation": "A"
+  },
+  {
+    "id": 6,
+    "name": "Universitas Lampung",
+    "acronym": "Unila",
+    "location": "Bandar Lampung, Lampung",
+    "region": "Sumatera",
+    "established": 1965,
+    "accreditation": "A"
+  },
+  {
+    "id": 7,
+    "name": "Universitas Indonesia",
+    "acronym": "UI",
+    "location": "Depok, Jawa Barat",
+    "region": "Jawa",
+    "established": 1849,
+    "accreditation": "A"
+  },
+  {
+    "id": 8,
+    "name": "Institut Teknologi Bandung",
+    "acronym": "ITB",
+    "location": "Bandung, Jawa Barat",
+    "region": "Jawa",
+    "established": 1920,
+    "accreditation": "A"
+  },
+  {
+    "id": 9,
+    "name": "Universitas Padjadjaran",
+    "acronym": "Unpad",
+    "location": "Bandung, Jawa Barat",
+    "region": "Jawa",
+    "established": 1957,
+    "accreditation": "A"
+  },
+  {
+    "id": 10,
+    "name": "Universitas Pendidikan Indonesia",
+    "acronym": "UPI",
+    "location": "Bandung, Jawa Barat",
+    "region": "Jawa",
+    "established": 1954,
+    "accreditation": "A"
+  },
+  {
+    "id": 11,
+    "name": "Universitas Gadjah Mada",
+    "acronym": "UGM",
+    "location": "Yogyakarta, DI Yogyakarta",
+    "region": "Jawa",
+    "established": 1949,
+    "accreditation": "A"
+  },
+  {
+    "id": 12,
+    "name": "Universitas Sebelas Maret",
+    "acronym": "UNS",
+    "location": "Surakarta, Jawa Tengah",
+    "region": "Jawa",
+    "established": 1976,
+    "accreditation": "A"
+  },
+  {
+    "id": 13,
+    "name": "Universitas Diponegoro",
+    "acronym": "Undip",
+    "location": "Semarang, Jawa Tengah",
+    "region": "Jawa",
+    "established": 1957,
+    "accreditation": "A"
+  },
+  {
+    "id": 14,
+    "name": "Universitas Negeri Semarang",
+    "acronym": "Unnes",
+    "location": "Semarang, Jawa Tengah",
+    "region": "Jawa",
+    "established": 1965,
+    "accreditation": "A"
+  },
+  {
+    "id": 15,
+    "name": "Universitas Airlangga",
+    "acronym": "Unair",
+    "location": "Surabaya, Jawa Timur",
+    "region": "Jawa",
+    "established": 1954,
+    "accreditation": "A"
+  },
+  {
+    "id": 16,
+    "name": "Institut Teknologi Sepuluh Nopember",
+    "acronym": "ITS",
+    "location": "Surabaya, Jawa Timur",
+    "region": "Jawa",
+    "established": 1960,
+    "accreditation": "A"
+  },
+  {
+    "id": 17,
+    "name": "Universitas Brawijaya",
+    "acronym": "UB",
+    "location": "Malang, Jawa Timur",
+    "region": "Jawa",
+    "established": 1963,
+    "accreditation": "A"
+  },
+  {
+    "id": 18,
+    "name": "Universitas Negeri Malang",
+    "acronym": "UM",
+    "location": "Malang, Jawa Timur",
+    "region": "Jawa",
+    "established": 1954,
+    "accreditation": "A"
+  },
+  {
+    "id": 19,
+    "name": "Universitas Jember",
+    "acronym": "Unej",
+    "location": "Jember, Jawa Timur",
+    "region": "Jawa",
+    "established": 1964,
+    "accreditation": "A"
+  },
+  {
+    "id": 20,
+    "name": "Universitas Negeri Jakarta",
+    "acronym": "UNJ",
+    "location": "Jakarta",
+    "region": "Jawa",
+    "established": 1964,
+    "accreditation": "A"
+  },
+  {
+    "id": 21,
+    "name": "Universitas Udayana",
+    "acronym": "Unud",
+    "location": "Denpasar, Bali",
+    "region": "Bali & Nusa Tenggara",
+    "established": 1962,
+    "accreditation": "A"
+  },
+  {
+    "id": 22,
+    "name": "Universitas Mataram",
+    "acronym": "Unram",
+    "location": "Mataram, Nusa Tenggara Barat",
+    "region": "Bali & Nusa Tenggara",
+    "established": 1962,
+    "accreditation": "A"
+  },
+  {
+    "id": 23,
+    "name": "Universitas Nusa Cendana",
+    "acronym": "Undana",
+    "location": "Kupang, Nusa Tenggara Timur",
+    "region": "Bali & Nusa Tenggara",
+    "established": 1962,
+    "accreditation": "B"
+  },
+  {
+    "id": 24,
+    "name": "Universitas Tanjungpura",
+    "acronym": "Untan",
+    "location": "Pontianak, Kalimantan Barat",
+    "region": "Kalimantan",
+    "established": 1959,
+    "accreditation": "A"
+  },
+  {
+    "id": 25,
+    "name": "Universitas Lambung Mangkurat",
+    "acronym": "Unlam",
+    "location": "Banjarmasin, Kalimantan Selatan",
+    "region": "Kalimantan",
+    "established": 1958,
+    "accreditation": "A"
+  },
+  {
+    "id": 26,
+    "name": "Universitas Mulawarman",
+    "acronym": "Unmul",
+    "location": "Samarinda, Kalimantan Timur",
+    "region": "Kalimantan",
+    "established": 1962,
+    "accreditation": "A"
+  },
+  {
+    "id": 27,
+    "name": "Universitas Palangka Raya",
+    "acronym": "UPR",
+    "location": "Palangka Raya, Kalimantan Tengah",
+    "region": "Kalimantan",
+    "established": 1963,
+    "accreditation": "B"
+  },
+  {
+    "id": 28,
+    "name": "Universitas Hasanuddin",
+    "acronym": "Unhas",
+    "location": "Makassar, Sulawesi Selatan",
+    "region": "Sulawesi",
+    "established": 1956,
+    "accreditation": "A"
+  },
+  {
+    "id": 29,
+    "name": "Universitas Tadulako",
+    "acronym": "Untad",
+    "location": "Palu, Sulawesi Tengah",
+    "region": "Sulawesi",
+    "established": 1981,
+    "accreditation": "B"
+  },
+  {
+    "id": 30,
+    "name": "Universitas Sam Ratulangi",
+    "acronym": "Unsrat",
+    "location": "Manado, Sulawesi Utara",
+    "region": "Sulawesi",
+    "established": 1965,
+    "accreditation": "A"
+  },
+  {
+    "id": 31,
+    "name": "Universitas Halu Oleo",
+    "acronym": "UHO",
+    "location": "Kendari, Sulawesi Tenggara",
+    "region": "Sulawesi",
+    "established": 1981,
+    "accreditation": "B"
+  },
+  {
+    "id": 32,
+    "name": "Universitas Pattimura",
+    "acronym": "Unpatti",
+    "location": "Ambon, Maluku",
+    "region": "Maluku & Papua",
+    "established": 1963,
+    "accreditation": "B"
+  },
+  {
+    "id": 33,
+    "name": "Universitas Cenderawasih",
+    "acronym": "Uncen",
+    "location": "Jayapura, Papua",
+    "region": "Maluku & Papua",
+    "established": 1962,
+    "accreditation": "B"
+  }
+]

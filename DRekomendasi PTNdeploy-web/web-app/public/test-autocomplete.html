@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Autocomplete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            background: #f5f5f5;
+        }
+        .search-box {
+            position: relative;
+            width: 500px;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #667eea;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        .dropdown.active {
+            display: block;
+        }
+        .item {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .item:hover {
+            background: #f0f0f0;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            display: none;
+        }
+        .result.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Autocomplete PTN</h1>
+    <p>Ketik nama PTN untuk test autocomplete</p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Ketik nama PTN..." oninput="handleSearch()">
+        <div class="dropdown" id="dropdown"></div>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        let allPTN = [];
+
+        // Load data
+        async function loadData() {
+            try {
+                console.log('Loading PTN...');
+                const response = await fetch('data/ptn-complete.json');
+                allPTN = await response.json();
+                console.log('PTN loaded:', allPTN.length);
+                console.log('Sample PTN:', allPTN[0]);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Gagal load data: ' + error.message);
+            }
+        }
+
+        function handleSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const dropdown = document.getElementById('dropdown');
+
+            console.log('Search term:', searchTerm);
+
+            if (searchTerm.length < 2) {
+                dropdown.classList.remove('active');
+                return;
+            }
+
+            const matched = allPTN.filter(ptn => 
+                ptn.name.toLowerCase().includes(searchTerm) ||
+                ptn.city.toLowerCase().includes(searchTerm)
+            ).slice(0, 8);
+
+            console.log('Matched PTN:', matched.length);
+
+            if (matched.length > 0) {
+                let html = '';
+                matched.forEach(ptn => {
+                    html += `
+                        <div class="item" onclick="selectPTN('${ptn.id}')">
+                            <strong>${ptn.name}</strong><br>
+                            <small>📍 ${ptn.city}, ${ptn.province}</small>
+                        </div>
+                    `;
+                });
+                dropdown.innerHTML = html;
+                dropdown.classList.add('active');
+            } else {
+                dropdown.classList.remove('active');
+            }
+        }
+
+        function selectPTN(ptnId) {
+            const ptn = allPTN.find(p => p.id === ptnId);
+            console.log('Selected PTN:', ptn);
+
+            document.getElementById('searchInput').value = ptn.name;
+            document.getElementById('dropdown').classList.remove('active');
+
+            const result = document.getElementById('result');
+            result.innerHTML = `
+                <h2>✅ PTN Terpilih:</h2>
+                <h3>${ptn.name}</h3>
+                <p><strong>Lokasi:</strong> ${ptn.city}, ${ptn.province}</p>
+                <p><strong>Akreditasi:</strong> ${ptn.accreditation}</p>
+                <p><strong>Didirikan:</strong> ${ptn.established}</p>
+                <p><strong>Website:</strong> <a href="${ptn.website}" target="_blank">${ptn.website}</a></p>
+            `;
+            result.classList.add('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchBox = document.querySelector('.search-box');
+            if (!searchBox.contains(e.target)) {
+                document.getElementById('dropdown').classList.remove('active');
+            }
+        });
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

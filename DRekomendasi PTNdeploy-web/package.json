@@ -1,0 +1,37 @@
+{
+  "name": "excel-data-analyzer",
+  "version": "1.0.0",
+  "description": "Aplikasi analisis data Excel dengan fitur statistik, filtering, sorting, dan validasi data",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.js tests/**/*.js",
+    "lint:fix": "eslint src/**/*.js tests/**/*.js --fix",
+    "start": "node src/index.js",
+    "web": "node web-app/server.js"
+  },
+  "keywords": [
+    "excel",
+    "data-analysis",
+    "statistics",
+    "xlsx"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "eslint": "^10.0.0",
+    "fast-check": "^4.5.3",
+    "jest": "^30.2.0",
+    "xlsx": "^0.18.5"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "pdfkit": "^0.15.0"
+  }
+}

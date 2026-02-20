@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database PTN & Jurusan</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .selector-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            background: white;
+        }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .majors-list {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .majors-list.active {
+            display: block;
+        }
+
+        .majors-list h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .major-item {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .major-item:hover {
+            background: #e8eaf6;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .major-item-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .major-item-info {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .major-detail {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.3s ease;
+        }
+
+        .major-detail.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-header {
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .detail-header h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .detail-header .meta {
+            color: #666;
+            font-size: 1em;
+        }
+
+        .detail-section {
+            margin-bottom: 30px;
+        }
+
+        .detail-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .index-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .index-table th,
+        .index-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .index-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .index-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .index-value {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .subject-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .subject-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .subject-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .subject-grade {
+            color: #667eea;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .subject-weight {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .badge-saintek {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-soshum {
+            background: #2196f3;
+            color: white;
+        }
+
+        .close-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background: #ff5252;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="school-header">
+                <div class="school-logo-small" id="schoolLogoHeader">
+                    <span class="logo-placeholder-small">🏫</span>
+                </div>
+                <div class="school-info">
+                    <h3 class="school-name-header">SMA Negeri 1 Telukdalam</h3>
+                    <p class="school-subtitle">Sistem Rekomendasi Jurusan PTN</p>
+                </div>
+            </div>
+            
+            <h1>🎓 Database PTN & Jurusan</h1>
+            
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="ptn-jurusan-simple.html" class="nav-link active">PTN & Jurusan</a>
+                <a href="subjects-database.html" class="nav-link">Database Mata Pelajaran</a>
+            </nav>
+            
+            <div class="user-info">
+                <span id="userRole">👤 Guest</span>
+                <button class="btn btn-secondary" onclick="logout()" id="logoutBtn" style="display: none;">Logout</button>
+            </div>
+        </header>
+
+        <!-- Dropdown PTN -->
+        <div class="selector-container">
+            <div class="form-group">
+                <label for="ptnSelect">Pilih Perguruan Tinggi Negeri (PTN):</label>
+                <select id="ptnSelect" onchange="loadMajors()">
+                    <option value="">-- Pilih PTN --</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Daftar Jurusan -->
+        <div class="majors-list" id="majorsList">
+            <h3>Daftar Jurusan di <span id="selectedPTNName"></span></h3>
+            <div id="majorsContainer"></div>
+        </div>
+
+        <!-- Detail Jurusan -->
+        <div class="major-detail" id="majorDetail">
+            <div class="detail-header">
+                <h2 id="detailMajorName"></h2>
+                <div class="meta">
+                    <span class="badge" id="detailCategory"></span>
+                    <span id="detailFaculty"></span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>Data Indeks Per Tahun</h3>
+                <table class="index-table">
+                    <thead>
+                        <tr>
+                            <th>Tahun</th>
+                            <th>Jumlah Peminat</th>
+                            <th>Daya Tampung</th>
+                            <th>Passing Grade</th>
+                            <th>Tingkat Keketatan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="indexTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="detail-section">
+                <h3>Mata Pelajaran Pendukung & Passing Grade</h3>
+                <div class="subject-list" id="subjectsList"></div>
+            </div>
+
+            <div class="detail-section">
+                <h3>Deskripsi Jurusan</h3>
+                <p id="detailDescription"></p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Prospek Karir</h3>
+                <p id="detailCareer"></p>
+            </div>
+
+            <button class="close-btn" onclick="closeDetail()">✕ Tutup Detail</button>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        let allPTN = [];
+        let allMajors = [];
+
+        // Update user info on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sessionId = localStorage.getItem('sessionId');
+            const userRole = localStorage.getItem('role');
+
+            console.log('Session ID:', sessionId);
+            console.log('User Role:', userRole);
+
+            if (sessionId && userRole) {
+                document.getElementById('userRole').textContent = `👤 ${userRole === 'admin' ? 'Admin' : 'Siswa'}`;
+                document.getElementById('logoutBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('userRole').textContent = '👤 Guest';
+                document.getElementById('logoutBtn').style.display = 'none';
+            }
+        });
+
+        // Load data
+        async function loadData() {
+            try {
+                console.log('Loading data...');
+                console.log('Fetching from:', window.location.origin + '/data/ptn-complete.json');
+                
+                const ptnResponse = await fetch('/data/ptn-complete.json');
+                if (!ptnResponse.ok) {
+                    throw new Error(`HTTP error! status: ${ptnResponse.status}`);
+                }
+                allPTN = await ptnResponse.json();
+                console.log('PTN loaded:', allPTN.length);
+
+                const majorsResponse = await fetch('/data/majors-complete.json');
+                if (!majorsResponse.ok) {
+                    throw new Error(`HTTP error! status: ${majorsResponse.status}`);
+                }
+                allMajors = await majorsResponse.json();
+                console.log('Majors loaded:', allMajors.length);
+
+                populatePTNDropdown();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                console.error('Error details:', error.message);
+                alert('Gagal memuat data. Pastikan server berjalan.\n\nError: ' + error.message);
+            }
+        }
+
+        function populatePTNDropdown() {
+            const select = document.getElementById('ptnSelect');
+            
+            allPTN.forEach(ptn => {
+                const option = document.createElement('option');
+                option.value = ptn.id;
+                option.textContent = `${ptn.name} - ${ptn.city}`;
+                select.appendChild(option);
+            });
+        }
+
+        function loadMajors() {
+            const ptnId = document.getElementById('ptnSelect').value;
+            
+            if (!ptnId) {
+                document.getElementById('majorsList').classList.remove('active');
+                document.getElementById('majorDetail').classList.remove('active');
+                return;
+            }
+
+            const ptn = allPTN.find(p => p.id === ptnId);
+            const majors = allMajors.filter(m => m.ptnId === ptnId);
+
+            console.log('Loading majors for:', ptn.name);
+            console.log('Found majors:', majors.length);
+
+            document.getElementById('selectedPTNName').textContent = ptn.name;
+            
+            const container = document.getElementById('majorsContainer');
+            container.innerHTML = '';
+
+            if (majors.length === 0) {
+                container.innerHTML = '<p style="color: #999;">Belum ada data jurusan untuk PTN ini.</p>';
+            } else {
+                majors.forEach(major => {
+                    const item = document.createElement('div');
+                    item.className = 'major-item';
+                    item.onclick = () => showMajorDetail(major);
+                    item.innerHTML = `
+                        <div class="major-item-name">${major.major}</div>
+                        <div class="major-item-info">
+                            ${major.category} • ${major.faculty} • Passing Grade: ${major.passingGrade}
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+
+            document.getElementById('majorsList').classList.add('active');
+            document.getElementById('majorDetail').classList.remove('active');
+
+            // Scroll to majors list
+            document.getElementById('majorsList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function showMajorDetail(major) {
+            console.log('Showing detail for:', major.major);
+
+            // Header
+            document.getElementById('detailMajorName').textContent = major.major;
+            document.getElementById('detailCategory').textContent = major.category;
+            document.getElementById('detailCategory').className = `badge badge-${major.category.toLowerCase()}`;
+            document.getElementById('detailFaculty').textContent = major.faculty;
+
+            // Data Indeks (simulasi untuk 2023, 2024, proyeksi 2033)
+            const indexData = [
+                {
+                    year: 2023,
+                    applicants: Math.floor(major.capacity * (Math.random() * 5 + 10)),
+                    capacity: major.capacity,
+                    passingGrade: major.passingGrade,
+                    competition: Math.floor(Math.random() * 10 + 10)
+                },
+                {
+                    year: 2024,
+                    applicants: Math.floor(major.capacity * (Math.random() * 5 + 12)),
+                    capacity: major.capacity,
+                    passingGrade: major.passingGrade,
+                    competition: Math.floor(Math.random() * 10 + 12)
+                },
+                {
+                    year: 2033,
+                    applicants: Math.floor(major.capacity * (Math.random() * 5 + 15)),
+                    capacity: Math.floor(major.capacity * 1.2), // Proyeksi kapasitas naik
+                    passingGrade: major.passingGrade,
+                    competition: Math.floor(Math.random() * 10 + 15)
+                }
+            ];
+
+            const tableBody = document.getElementById('indexTableBody');
+            tableBody.innerHTML = '';
+            indexData.forEach(data => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${data.year}${data.year === 2033 ? ' (Proyeksi)' : ''}</strong></td>
+                    <td>${data.applicants.toLocaleString()}</td>
+                    <td>${data.capacity.toLocaleString()}</td>
+                    <td class="index-value">${data.passingGrade}</td>
+                    <td class="index-value">1:${data.competition}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Mata Pelajaran
+            const subjectsList = document.getElementById('subjectsList');
+            subjectsList.innerHTML = '';
+            major.requiredSubjects.forEach(subject => {
+                const card = document.createElement('div');
+                card.className = 'subject-card';
+                card.innerHTML = `
+                    <div class="subject-name">${subject.name}</div>
+                    <div class="subject-grade">Passing Grade: ${subject.minScore}</div>
+                    <div class="subject-weight">Bobot: ${subject.weight}%</div>
+                    <div class="subject-weight">${subject.reason}</div>
+                `;
+                subjectsList.appendChild(card);
+            });
+
+            // Deskripsi
+            document.getElementById('detailDescription').textContent = major.description;
+
+            // Prospek Karir
+            document.getElementById('detailCareer').textContent = major.careerProspects.join(', ');
+
+            // Show detail
+            document.getElementById('majorDetail').classList.add('active');
+
+            // Scroll to detail
+            document.getElementById('majorDetail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeDetail() {
+            document.getElementById('majorDetail').classList.remove('active');
+            document.getElementById('majorsList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Load school logo
+        loadSchoolLogo('schoolLogoHeader');
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
